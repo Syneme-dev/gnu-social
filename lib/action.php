@@ -1019,7 +1019,8 @@ class Action extends HTMLOutputter // lawsuit
     {
         $this->elementStart('div', array('id' => 'footer'));
         if (Event::handle('StartShowInsideFooter', array($this))) {
-            $this->showSecondaryNav();
+           //Note:xujian do not show this.
+                       //$this->showSecondaryNav();
             $this->showLicenses();
             Event::handle('EndShowInsideFooter', array($this));
         }
@@ -1044,7 +1045,8 @@ class Action extends HTMLOutputter // lawsuit
      */
     function showLicenses()
     {
-        $this->showGNUsocialLicense();
+        //note:xujian
+        //$this->showGNUsocialLicense();
         $this->showContentLicense();
     }
 

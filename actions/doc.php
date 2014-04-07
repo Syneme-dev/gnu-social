@@ -209,24 +209,8 @@ class DocListNav extends Menu
                                  array('title' => 'contact'),
                                  _m('MENU', 'Contact'),
                                  _('Contact info'),
-                                 'nav_doc_contact'),
-                           array('doc',
-                                 array('title' => 'tags'),
-                                 _m('MENU', 'Tags'),
-                                 _('Using tags'),
-                                 'nav_doc_tags'),
-                           array('doc',
-                                 array('title' => 'groups'),
-                                 _m('MENU', 'Groups'),
-                                 _('Using groups'),
-                                 'nav_doc_groups'),
-                           array('doc',
-                                 array('title' => 'api'),
-                                 _m('MENU', 'API'),
-                                 _('RESTful API'),
-                                 'nav_doc_api'));
+                                 'nav_doc_contact'));
 
-            Event::handle('EndDocsMenu', array(&$items));
         }
         return $items;
     }
