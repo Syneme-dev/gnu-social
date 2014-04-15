@@ -274,16 +274,7 @@
 
     #site_nav_local_views a:hover, #site_nav_local_views .current a {
         color: #3c4b5e;
-        text-decoration: none;
-        text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
-        background: #364a84;
-        background: -moz-linear-gradient(top, #7b8dbb 0%, #364a84 100%);
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7b8dbb), color-stop(100%,#364a84));
-        background: -webkit-linear-gradient(top, #7b8dbb 0%,#364a84 100%);
-        background: -o-linear-gradient(top, #7b8dbb 0%,#364a84 100%);
-        background: -ms-linear-gradient(top, #7b8dbb 0%,#364a84 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7b8dbb', endColorstr='#364a84',GradientType=0 );
-        background: linear-gradient(top, #7b8dbb 0%,#364a84 100%);
+
     }
 
     /* aside primary */
@@ -388,12 +379,6 @@
         line-height: 1.6em;
     }
 
-    .section .avatar {
-        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-        -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-        -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-    }
-
     .invite_button {
         height: 2.1em;
         line-height: 2.1em;
@@ -493,11 +478,6 @@
         min-width: 80px;
     }
 
-    #content .threaded-replies .notice .author .photo {
-        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-        -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-        -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-    }
 
     .user_in.realtime-popup .notice div.entry-content {
         max-width: 320px;
@@ -625,18 +605,9 @@
         text-transform: uppercase;
         font-size: 1.2em;
         text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
-        border: 1px solid #d7621c;
-        border-radius: 4px;
-        -moz-border-radius: 4px;
-        -webkit-border-radius: 4px;
-        background: #FB6104;
-        background: -moz-linear-gradient(top, #ff9d63 0%, #fb6104 100%);
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff9d63), color-stop(100%,#fb6104));
-        background: -webkit-linear-gradient(top, #ff9d63 0%,#fb6104 100%);
-        background: -o-linear-gradient(top, #ff9d63 0%,#fb6104 100%);
-        background: -ms-linear-gradient(top, #ff9d63 0%,#fb6104 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9d63', endColorstr='#fb6104',GradientType=0 );
-        background: linear-gradient(top, #ff9d63 0%,#fb6104 100%);
+        border: 1px solid #b7b7b7;
+        background-color: #3c4b5e;
+
     }
 
     .form_notice input.submit:hover, .form_settings input.submit:hover, .form_settings input.cancel:hover, #form_invite input.submit:hover,
@@ -644,15 +615,7 @@
     .entity_tag .dialogbox input.submit_dialogbox:hover,
     .form_repeat.dialogbox input.submit_dialogbox:hover
     {
-        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.6);
-        background: #ff9d63;
-        background: -moz-linear-gradient(top, #fb6104 0%, #fc8035 100%);
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fb6104), color-stop(100%,#fc8035));
-        background: -webkit-linear-gradient(top, #fb6104 0%,#fc8035 100%);
-        background: -o-linear-gradient(top, #fb6104 0%,#fc8035 100%);
-        background: -ms-linear-gradient(top, #fb6104 0%,#fc8035 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb6104', endColorstr='#fc8035',GradientType=0 );
-        background: linear-gradient(top, #fb6104 0%,#fc8035 100%);
+        background: #b7b7b7;
     }
 
     .form_settings input#settings_design_reset, .form_settings input#cancel, #form_action-no {
@@ -1585,6 +1548,7 @@ a{
 }
 #site_nav_local_views .nav li a
 {
+    text-indent:-5000px;/*Note:use to hide the text.*/
     height: 40px !important;
     width: 40px !important;
     overflow: hidden;
@@ -1598,7 +1562,7 @@ a{
 #nav_local_default .current
 {
     width: 40px !important;
-    background: none #3c4b5e !important;
+    background:  #3c4b5e !important;
 }
 #site_nav_local_views li
 {
@@ -1611,7 +1575,6 @@ a{
     width: 40px !important;
     overflow: hidden;
     font-size: 20pt;
-    background:none #3c4b5e !important;
     color: #b7b7b7 !important;
     border-radius:0px !important;
 
@@ -1626,10 +1589,10 @@ a{
 #site_nav_local_views li a:hover
 {
     /*width:100% !important;*/
-    background:none #3c4b5e !important;
+    /*background:none #3c4b5e !important;*/
     padding: 0px 0px 0px 4px !important;
     border-radius:0px !important;
-    color: #b7b7b7 !important;
+    /*color: #b7b7b7 !important;*/
 }
 
 
@@ -1665,7 +1628,7 @@ ul.bookmark-tags a{
 .instructions{
     display: none !important;
 }
-.form_data li label
+#form_search .form_data li label
 {
     width:70px !important;
 }
@@ -1709,7 +1672,69 @@ th#Members
 {
     background-color: #b7b7b7;
 }
+
+
 #content .notice-source-activity div.entry-title, .notice-source-activity div.entry-content
 {
     margin:2px 7px 0px 59px;
+}
+
+#nav_timeline_public a{
+    background-image: url(../images/icons/PublicTimeline.png);
+}
+
+#nav_groups a{
+    background-image: url(../images/icons/Groups.png);
+}
+
+#nav_recent-tags a{
+    background-image: url(../images/icons/RecentTags.png);
+}
+#nav_timeline_favorited a{
+    background-image: url(../images/icons/Favorites.png);
+}
+#nav_directory a{
+    background-image: url(../images/icons/Users.png);
+}
+
+
+#nav_timeline_public a:hover,#nav_timeline_public.current a{
+    background-image: url(../images/icons/mouseOver/PublicTimeline.png);
+}
+
+#nav_groups a:hover,#nav_groups.current a{
+    background-image: url(../images/icons/mouseOver/Groups.png);
+}
+
+#nav_recent-tags a:hover,#nav_recent-tags.current a{
+    background-image: url(../images/icons/mouseOver/RecentTags.png);
+}
+#nav_timeline_favorited a:hover,#nav_timeline_favorited.current a{
+    background-image: url(../images/icons/mouseOver/Favorites.png);
+}
+#nav_directory a:hover,#nav_directory.current a{
+    background-image: url(../images/icons/mouseOver/Users.png);
+}
+#nav_doc_help a{
+    background-image: url(../images/icons/Profile.png);;
+}
+
+
+#nav_doc_help a:hover,#nav_doc_help.current a{
+    background-image: url(../images/icons/mouseOver/Profile.png) ;
+}
+
+#nav_return_top a{
+    background-image: url(../images/icons/Home.png);;
+}
+
+#nav_return_top a:hover,#nav_return_top.current a{
+    background-image: url(../images/icons/mouseOver/Home.png) ;
+}
+
+
+#export_data li a.json,#export_data li a.atom,#export_data li a.rss
+{
+    background-image: none;
+    padding-left: 10px;
 }
