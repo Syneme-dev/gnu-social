@@ -64,6 +64,10 @@ function _get_reader($domain=null, $category=5, $enable_cache=true) {
 		else {
 			$input = null;
 		}
+		if($text_domains[$domain]==NULL)
+		{
+		$text_domains[$domain]=new stdClass();
+		}
 		$text_domains[$domain]->l10n = new gettext_reader($input, $enable_cache);
 	}
 	return $text_domains[$domain]->l10n;
@@ -151,6 +155,7 @@ function _bindtextdomain($domain, $path) {
        // ensure $path ends with a slash
        if ($path[strlen($path) - 1] != '/') $path .= '/';
        elseif ($path[strlen($path) - 1] != '\\') $path .= '\\';
+	$text_domains[$domain]=new stdclass;
 	$text_domains[$domain]->path = $path;
 }
 

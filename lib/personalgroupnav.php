@@ -115,7 +115,7 @@ class PersonalGroupNav extends Menu
                                      _m('MENU','Messages'),
                                      // TRANS: Menu item title in personal group navigation menu.
                                      _('Your incoming messages'),
-                                     $mine && $action =='inbox');
+                                     $mine && $action =='inbox','nav_inbox');
             }
 
             Event::handle('EndPersonalGroupNav', array($this));
