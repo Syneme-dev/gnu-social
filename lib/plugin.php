@@ -191,7 +191,15 @@ class Plugin
 
     function path($relative)
     {
-        return self::staticPath($this->name(), $relative);
+        // get relative path.
+                   if (@file_exists(INSTALLDIR.'/local/plugins/'.$plugin.'/'.$relative)) {
+                        $path = common_config('site', 'path') . 'local/plugins/';
+                    } else {
+                        $path = common_config('site', 'path') . 'plugins/';
+                    }
+        $relatedPath= $path.$this->name()."/".$relative;
+        return $relatedPath;
+       //return self::staticPath($this->name(), $relative);
     }
 
     static function staticPath($plugin, $relative)
@@ -237,7 +245,6 @@ class Plugin
         }
 
         $protocol = ($isHTTPS) ? 'https' : 'http';
-
         return $protocol.'://'.$server.$path.$plugin.'/'.$relative;
     }
 }

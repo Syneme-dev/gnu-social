@@ -141,7 +141,10 @@ class LoginAction extends FormAction
     function showScripts()
     {
         parent::showScripts();
-        $this->autofocus('nickname');
+        /*automatic login for mac*/
+         if (!$this->boolean('fromMac')) {
+                    $this->autofocus('nickname');
+        }
     }
 
     /**

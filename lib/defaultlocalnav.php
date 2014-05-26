@@ -98,25 +98,15 @@ class DocListNav extends Menu
         if (Event::handle('StartDocsMenu', array(&$items))) {
 
             $items = array(array('doc',
+                                array('title' => 'about'),
+                                _m('MENU', 'About'),
+                                _('About this site'),
+                                'nav_doc_about'),
+                            array('doc',
                                  array('title' => 'help'),
                                  _m('MENU', 'Help'),
                                  _('Getting started'),
-                                 'nav_doc_help'),
-                           array('doc',
-                                 array('title' => 'about'),
-                                 _m('MENU', 'About'),
-                                 _('About this site'),
-                                 'nav_doc_about'),
-                           array('doc',
-                                 array('title' => 'faq'),
-                                 _m('MENU', 'FAQ'),
-                                 _('Frequently asked questions'),
-                                 'nav_doc_faq'),
-                           array('doc',
-                                 array('title' => 'contact'),
-                                 _m('MENU', 'Contact'),
-                                 _('Contact info'),
-                                 'nav_doc_contact'));
+                                 'nav_doc_help'));
 
             //Event::handle('EndDocsMenu', array(&$items));
         }

@@ -79,7 +79,7 @@ class BookmarkListItem extends NoticeListItemAdapter
         // Whether to nofollow
 
         $attrs = array('href' => $nb->url,
-                       'class' => 'bookmark-title');
+                       'class' => 'bookmark-title','target' =>'_blank');
 
         $nf = common_config('nofollow', 'external');
 

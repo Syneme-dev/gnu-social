@@ -179,8 +179,8 @@ class Theme
         if ($path[0] != '/') {
             $path = '/'.$path;
         }
-
-        return $protocol.'://'.$server.$path.$name;
+        return $path.$name;
+        //return $protocol.'://'.$server.$path.$name;
     }
 
     /**

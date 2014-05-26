@@ -338,7 +338,6 @@ class Action extends HTMLOutputter // lawsuit
     function primaryCssLink($mainTheme=null, $media=null)
     {
         $theme = new Theme($mainTheme);
-
         // Some themes may have external stylesheets, such as using the
         // Google Font APIs to load webfonts.
         foreach ($theme->getExternals() as $url) {
@@ -518,6 +517,10 @@ class Action extends HTMLOutputter // lawsuit
      */
     function extraHead()
     {
+    //SampleCode for meta element.
+    //$this->element('meta', array('name' => 'viewport',
+                                         //'content' => 'width=device-width,initial-scale=1,user-scalable=no'
+                                         //));
         // does nothing by default
     }
 
@@ -530,9 +533,12 @@ class Action extends HTMLOutputter // lawsuit
      */
     function showBody()
     {
-        $this->elementStart('body', (common_current_user()) ? array('id' => strtolower($this->trimmed('action')),
-                                                                    'class' => 'user_in')
-                            : array('id' => strtolower($this->trimmed('action'))));
+        $userStatusBodystyle=(common_current_user())?'user_in':'';
+        $loginMacPagestyle=strtolower($this->trimmed('action'))=='login' &&
+                        strtolower($this->trimmed('fromMac'))=='true'?'hide ':'';
+        $bodystyle=$loginMacPagestyle . $userStatusBodystyle;
+        $this->elementStart('body', array('id' => strtolower($this->trimmed('action')),
+                                                     'class' => $bodystyle));
         $this->elementStart('div', array('id' => 'wrap'));
         if (Event::handle('StartShowHeader', array($this))) {
             $this->showHeader();
@@ -1019,7 +1025,7 @@ class Action extends HTMLOutputter // lawsuit
     {
         $this->elementStart('div', array('id' => 'footer'));
         if (Event::handle('StartShowInsideFooter', array($this))) {
-           //Note:xujian do not show this.
+           //Note: do not show this.
                        //$this->showSecondaryNav();
             $this->showLicenses();
             Event::handle('EndShowInsideFooter', array($this));
@@ -1045,7 +1051,7 @@ class Action extends HTMLOutputter // lawsuit
      */
     function showLicenses()
     {
-        //note:xujian
+        //note:hide this.
         //$this->showGNUsocialLicense();
         $this->showContentLicense();
     }

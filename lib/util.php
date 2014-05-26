@@ -640,7 +640,6 @@ function common_linkify_mention($mention)
         if (!empty($mention['title'])) {
             $attrs['title'] = $mention['title'];
         }
-
         $xs->elementStart('span', 'vcard');
         $xs->elementStart('a', $attrs);
         $xs->element('span', 'fn nickname '.$mention['type'], $mention['text']);
@@ -1231,7 +1230,6 @@ function common_local_url($action, $args=null, $params=null, $fragment=null, $ad
     if (Event::handle('StartLocalURL', array(&$action, &$params, &$fragment, &$addSession, &$url))) {
         $r = Router::get();
         $path = $r->build($action, $args, $params, $fragment);
-
         $ssl = common_config('site', 'ssl') === 'always'
                 || StatusNet::isHTTPS()
                 || common_is_sensitive($action);
@@ -1295,12 +1293,16 @@ function common_path($relative, $ssl=false, $addSession=true)
             common_log(LOG_ERR, 'Site server not configured, unable to determine site name.');
         }
     }
-
+    $serverpart= $_SERVER['HTTP_HOST'];
     if ($addSession) {
         $relative = common_inject_session($relative, $serverpart);
     }
+    //domain name should be enable to change by request from different domain.
 
-    return $proto.'://'.$serverpart.'/'.$pathpart.$relative;
+    //using related url.
+    $url= "/".$pathpart.$relative;
+    //$url= $proto.'://'.$serverpart.'/'.$pathpart.$relative;
+    return $url;
 }
 
 function common_inject_session($url, $serverpart = null)
@@ -1316,7 +1318,6 @@ function common_inject_session($url, $serverpart = null)
     $currentServer = (array_key_exists('HTTP_HOST', $_SERVER)) ? $_SERVER['HTTP_HOST'] : null;
 
     // Are we pointing to another server (like an SSL server?)
-
     if (!empty($currentServer) && 0 != strcasecmp($currentServer, $serverpart)) {
         // Pass the session ID as a GET parameter
         $sesspart = session_name() . '=' . session_id();
@@ -1327,7 +1328,6 @@ function common_inject_session($url, $serverpart = null)
             $url = substr($url, 0, $i + 1).$sesspart.'&'.substr($url, $i + 1);
         }
     }
-
     return $url;
 }
 
