@@ -100,9 +100,10 @@ class NoticeSection extends Section
         $this->out->elementEnd('span');
 
         $this->out->elementStart('p', 'entry-content');
-        $this->out->text(mb_strlen($notice->content) > $this->maxchars
-            ? mb_substr($notice->content, 0, $this->maxchars) . '[…]'
-            : $notice->content);
+        $this->out->raw($notice->rendered);
+       // $this->out->text(mb_strlen($notice->content) > $this->maxchars
+         //   ? mb_substr($notice->content, 0, $this->maxchars) . '[…]'
+           // : $notice->content);
         $this->out->elementEnd('p');
 
         $this->out->elementStart('div', 'entry_content');

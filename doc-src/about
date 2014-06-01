@@ -1,24 +1,12 @@
-<!-- Copyright 2008-2010 StatusNet Inc. and contributors. -->
-<!-- Document licensed under Creative Commons Attribution 3.0 Unported. See -->
-<!-- http://creativecommons.org/licenses/by/3.0/ for details. -->
-This is a social network, running the GNU social software.
+This site is the main microblogging service for The Artsmesh: a network of music studios connected by high-speed networks, engaged in the practice of network music performance (NMP).
 
-You can use it to make connections between friends, family and
-colleagues -- writing short notices about yourself, where you are, and
-what you're doing, and those notices will be sent to all your contacts.
+We provide this server as an initial convenience (on-ramp) for the Artsmesh user, though the mesh is designed to be a decentralized, federated network and we encourage you to run a themed version of GNU Social [link: https://www.gnu.org/software/social] on your own server. 
+Alternatively we provide a service to host your own solo site on one of our Linodes located in a region of your choice.
 
-In the future, we'll be adding support for photo, video and file
-sharing, as well as events, better contact management and mobile
-devices.
+The Artsmesh is accessed through an application called Artsmesh [link: /group/artsmesh]: a Pro-Presence tool - developed jointly by Syneme [linked to: /group/syneme] and the Detao Artsmesh Studio [link to: /group/detao] in Beijing. Beta release scheduled for Sept/2014.
 
-%%site.name%% is a
-social network based on the Free Software [GNU social](http://www.gnu.org/software/social/) tool.
+Artsmesh is a Network-User Interface (NUI): routing audio/video via Jack and Syphon frameworks, network testing and visualization, user/group management/merging (CoreOS/ETCD clusters); making live multi-site network music performances DIY simple.
 
-If you [register](%%action.register%%) for an account,
-you can post small (%%site.textlimit%% chars or less) text notices
-about yourself, where you are, what you're doing, or practically
-anything you want. You can also subscribe to the notices of your
-friends, or other people you're interested in, and follow them on the
-Web or in an [RSS](http://en.wikipedia.org/wiki/RSS) feed.
+If you would like to participate, please contact Syneme: syneme.lab@gmail.com.
 
-It runs on [GNU social](https://www.gnu.org/software/social/), version 1.1.1-alpha, available under the [GNU Affero General Public License](http://www.fsf.org/licensing/licenses/agpl-3.0.html).
+The Artsmesh app and site are both enbled for IPV6

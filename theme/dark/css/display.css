@@ -1534,9 +1534,7 @@ color: #b7b7b7 !important;
     margin:2px 7px 0 59px;
 }
 
-#nav_timeline_public a{
-    background-image: url(../images/icons/PublicTimeline.png);
-}
+
 
 #nav_groups a{
     background-image: url(../images/icons/Groups.png);
@@ -1552,10 +1550,6 @@ color: #b7b7b7 !important;
     background-image: url(../images/icons/Users.png);
 }
 
-
-#nav_timeline_public a:hover,#nav_timeline_public.current a{
-    background-image: url(../images/icons/mouseOver/PublicTimeline.png);
-}
 
 #nav_groups a:hover,#nav_groups.current a{
     background-image: url(../images/icons/mouseOver/Groups.png);
@@ -1605,6 +1599,15 @@ color: #b7b7b7 !important;
     background-image: url(../images/icons/mouseOver/contact.png) ;
 }
 
+#nav_timeline_public a{
+    background-image: url(../images/icons/Home.png);
+}
+
+#nav_timeline_public a:hover,#nav_timeline_public.current a{
+    background-image: url(../images/icons/mouseOver/Home.png);
+}
+
+
 
 #nav_return_top a{
     background-image: url(../images/icons/Home.png);;
@@ -1615,13 +1618,12 @@ color: #b7b7b7 !important;
 }
 
 #nav_timeline_personal a{
-    background-image: url(../images/icons/Home.png);;
+    background-image: url(../images/icons/PublicTimeline.png);;
 }
 
 #nav_timeline_personal a:hover,#nav_timeline_personal.current a{
-    background-image: url(../images/icons/mouseOver/Home.png) ;
+    background-image: url(../images/icons/mouseOver/PublicTimeline.png) ;
 }
-
 
 
 
@@ -1645,13 +1647,7 @@ color: #b7b7b7 !important;
     background-image: url(../images/icons/mouseOver/RepliesPost.png) ;
 }
 
-#nav_timeline_personal a{
-    background-image: url(../images/icons/Home.png);;
-}
 
-#nav_timeline_personal a:hover,#nav_timeline_personal.current a{
-    background-image: url(../images/icons/mouseOver/Home.png) ;
-}
 
 #nav_timeline_favorites a{
     background: url(../images/icons/Favorites.png);
@@ -1801,15 +1797,6 @@ input[type=text],input[type=password]
 
 
 
-
-/*p {*/
-    /*font-family: sans-serif;*/
-/*}*/
-
-/*label.custom-select {*/
-    /*position: relative;*/
-    /*display: inline-block;*/
-/*}*/
 
  select {
     display: inline-block;

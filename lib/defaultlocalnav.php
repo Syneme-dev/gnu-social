@@ -53,16 +53,16 @@ class DefaultLocalNav extends Menu
         $this->action->elementStart('ul', array('id' => 'nav_local_default'));
 
         if (Event::handle('StartDefaultLocalNav', array($this, $user))) {
-
+            $bn = new PublicGroupNav($this->action);
+            // TRANS: Menu item in default local navigation panel.
+            $this->submenu(_m('MENU','Public'), $bn);
             if (!empty($user)) {
                 $pn = new PersonalGroupNav($this->action);
                 // TRANS: Menu item in default local navigation panel.
                 $this->submenu(_m('MENU','Home'), $pn);
             }
 
-            $bn = new PublicGroupNav($this->action);
-            // TRANS: Menu item in default local navigation panel.
-            $this->submenu(_m('MENU','Public'), $bn);
+
              $docs = new DocListNav($this->action);
                                 $this->submenu(_m('MENU','Docs'), $docs);
 
