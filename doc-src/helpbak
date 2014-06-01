@@ -1,0 +1,154 @@
+<!-- Copyright 2008-2010 StatusNet Inc. and contributors. -->
+<!-- Document licensed under Creative Commons Attribution 3.0 Unported. See -->
+<!-- http://creativecommons.org/licenses/by/3.0/ for details. -->
+
+%%site.name%% is a **social service**. Users can post short
+(%%site.textlimit%% character) status messages which are broadcast to
+their friends and colleagues on the service and (optionally) onto the Web.
+
+You can also broadcast other types of data, like bookmarks, event
+invitations, polls, and questions.
+
+If you'd like to try it out, first [register](%%action.register%%) a new account.
+Then, on the [public timeline](%%action.top%%), enter your message into
+the textbox at the top of the page, and click "Send". It will go out on the
+public timeline and to anyone who is subscribed to your notices.
+
+To subscribe to other people's notifications, go to their profile page
+and click the "subscribe" button. They'll get a notice that you're now
+subscribed to their notifications.
+
+OpenID
+------------------------------
+
+%%site.name%% supports the [OpenID](http://openid.net/) standard for single signon between Web sites. OpenID lets you log into many different Web sites without using a different password for each. (See [Wikipedia's OpenID article](http://en.wikipedia.org/wiki/OpenID) for more information.)
+
+If you already have an account on %%site.name%%, you can [login](%%action.login%%) with your username and password as usual.
+To use OpenID in the future, you can [add an OpenID to your account](%%action.openidsettings%%) after you have logged in normally.
+
+There are many [Public OpenID providers](http://wiki.openid.net/OpenID-Providers), and you may already have an OpenID-enabled account on another service.
+
+* On wikis: If you have an account on an OpenID-enabled wiki, like [Wikitravel](http://wikitravel.org/), [wikiHow](http://www.wikihow.com/), [Vinismo](http://vinismo.com/), [AboutUs](http://aboutus.org/) or [Keiki](http://kei.ki/), you can log in to %%site.name%% by entering the **full URL** of your user page on that other wiki in the box above. For example, *http://kei.ki/en/User:Evan*.
+* [Yahoo!](http://openid.yahoo.com/) : If you have an account with Yahoo!, you can log in to this site by entering your Yahoo!-provided OpenID in the box above. Yahoo! OpenID URLs have the form *https://me.yahoo.com/yourusername*.
+* [AOL](http://dev.aol.com/aol-and-63-million-openids) : If you have an account with [AOL](http://www.aol.com/), like an [AIM](http://www.aim.com/) account, you can log in to %%site.name%% by entering your AOL-provided OpenID in the box above. AOL OpenID URLs have the form *http://openid.aol.com/yourusername*. Your username should be all lowercase, no spaces.
+* [Blogger](http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html), [Wordpress.com](http://faq.wordpress.com/2007/03/06/what-is-openid/), [LiveJournal](http://www.livejournal.com/openid/about.bml), [Vox](http://bradfitz.vox.com/library/post/openid-for-vox.html) : If you have a blog on any of these services, enter your blog URL in the box above. For example, *http://yourusername.blogspot.com/*, *http://yourusername.wordpress.com/*, *http://yourusername.livejournal.com/*, or *http://yourusername.vox.com/*.
+
+Additionally, once you have an account on %%site.name%%, you can use your profile's URL (https://%%site.server%%/yourusername) as an OpenID elsewhere as well.
+
+Tags
+------------------------------
+
+<!-- Copyright 2008-2010 StatusNet Inc. and contributors. -->
+<!-- Document licensed under Creative Commons Attribution 3.0 Unported. See -->
+<!-- http://creativecommons.org/licenses/by/3.0/ for details. -->
+
+%%site.name%% supports
+[tags](http://en.wikipedia.org/wiki/Tag_(metadata)) to help you
+organize your activities here. You can use tags for people and for
+notices.
+
+***Tagging a notice***
+
+You can tag a notice using a *hashtag*; a # character followed by
+letters and numbers as well as '.', '-', and '_'. Note that accented
+latin characters are not supported, and non-roman scripts are right out.
+
+The HTML for the notice will link to a stream of all the other notices
+with that tag. This can be a great way to keep track of a conversation.
+
+***Tagging yourself***
+
+You can also add tags for yourself on your [profile
+settings](%%action.profilesettings%%) page or by using the edit tags
+button on your profile page. Use single words to
+describe yourself, your experiences and your interest. The tags will
+become links on your profile page to a list of all the users on the
+site who use that same tag. It can be a nice way to find people who
+are related to you geographically or who have a common interest.
+
+***Tagging others***
+
+You can also tag other users by using the edit tags button next to
+their profile. Such tags are called *people tags*. Once you have
+created a people tag, you can add or remove users from it using the
+tag's edit form. This makes it easy to organize your subscriptions
+into groups and sort through them separately. Also, it will let
+you create custom lists of people that others can subscribe to.
+
+You can also send a notice "to the attention of" your subscribers
+whom you've marked with a particular tag (note: *not* people who've
+marked themselves with that tag). "@#family hello" will send a
+notice to all your subscribers you've marked with the tag 'family'.
+
+***Private and public people tags***
+
+A private people tag is only visible to the creator, it cannot be
+subscribed to, but the timeline can be viewed. To create a new
+private prepend a '.' to the tag in the tags editing box. To set
+an existing public tag as private or vice-versa, go to the tag's
+edit page.
+
+Groups
+------
+
+<!-- Copyright 2008-2010 StatusNet Inc. and contributors. -->
+<!-- Document licensed under Creative Commons Attribution 3.0 Unported. See -->
+<!-- http://creativecommons.org/licenses/by/3.0/ for details. -->
+
+Users on %%site.name%% can create *groups* that other users can join.
+Groups can be a great way to share information and entertainment with
+a group of people who have a common interest or background; who work
+together on a team; or who have a particular knowledge or skill.
+
+You can find out about groups on the server on the
+[Groups](%%action.groups%%) page. You can join a group by clicking on
+the "Join" button either in the group list or on the group's home page.
+
+***Starting a new group***
+
+You can start a new group for friends and colleagues. Note that all
+groups are free for anyone to join.
+
+To start a new group, use the [new group](%%action.newgroup%%) tool
+and fill out the form. Describe your group as best you can if you want
+people to be able to find it.
+
+When choosing the nickname for your group, try to keep it short. The
+nickname is sometimes included in messages to and from the group, so
+the less chars the better. Try using acronyms for organizations, or
+airport codes for places (like 'pdx' instead of 'portland').
+
+***Sending messages to a group***
+
+You can send a message to a group using the syntax "!groupname"
+anywhere in the message. If you have more than one group named, the
+notice will go to each group. Only members can send notices to a
+group, and groups do not respond to direct messages (DMs).
+
+You can also select the group from the "To:" drop down when posting.
+
+You can make a group message private by clicking the "private" button
+before posting.
+
+***Receiving messages***
+
+New group messages will appear in your inbox, and will also come to
+your phone or IM client if you've set them up to receive notices.
+
+***Private groups***
+
+The administrator can make a group private. For a private group, all
+notices will marked as private for group members only. Also,
+administrators will have to approve all new members to the group.
+
+Private groups are visible in the group directory.
+
+API
+---
+
+<!-- Copyright 2008-2010 StatusNet Inc. and contributors. -->
+<!-- Document licensed under Creative Commons Attribution 3.0 Unported. See -->
+<!-- http://creativecommons.org/licenses/by/3.0/ for details. -->
+
+%%site.name%% provides an API that applications can use to interact with it.
+More information about this API can be found on the [StatusNet Wiki](http://status.net/wiki/API).
