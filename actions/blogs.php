@@ -51,7 +51,7 @@ define('MAX_PUBLIC_PAGE', 100);
  * @see      PublicrssAction
  * @see      PublicxrdsAction
  */
-class PublicAction extends Action
+class BlogsAction extends Action
 {
     /**
      * page of the stream we're on; default = 1
@@ -270,27 +270,7 @@ class PublicAction extends Action
         $feat = new FeaturedUsersSection($this);
         $feat->show();
     }
-   // function showHeader{
-   // }
-    function showFooter(){
-    }
-    //function showBody(){
-
-    //}
-    function showPrimaryNav(){
-    parent::showPrimaryNav();
-    }
-    function showCore(){
-       $this->elementStart('div', array('id' => 'core'));
-    $this->element('img', array('src' => '/theme/base/mapShot.png','width'=>
-    '100%'));
-     $this->element('iframe', array('src' => 'http://www.youtube.com/embed/XxSOcc9qcsI','width'=>
-        '640','height'=>'390','allowfullscreen'=>'','style'=>'position:absolute;'));
-   // <iframe width="640" height="390" src="//www.youtube.com/embed/XxSOcc9qcsI" frameborder="0" allowfullscreen></iframe>
-    $this->elementEnd('div');
-
-    }
-   // function showLogo(){
+    //function showCore(){
     //}
 
     function showAnonymousMessage()

@@ -971,7 +971,7 @@ class Router
 
                 $m->connect('',
                             array('action' => 'showstream',
-                                  'nickname' => $nickname));
+                                 'nickname' => $nickname));
 
                 // peopletags
 
@@ -1025,6 +1025,10 @@ class Router
                 }
             } else {
                 $m->connect('', array('action' => 'public'));
+
+                $m->connect('blogs', array('action' => 'blogs'));
+                //$m->connect('', array('action' => 'group'));
+
                 $m->connect('rss', array('action' => 'publicrss'));
                 $m->connect('featuredrss', array('action' => 'featuredrss'));
                 $m->connect('favoritedrss', array('action' => 'favoritedrss'));

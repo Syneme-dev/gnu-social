@@ -84,6 +84,12 @@ class PrimaryNav extends Menu
                                 _('Login to the site.'),
                                 false,
                                 'nav_login');
+
+                                $this->action->menuItem(common_local_url('blogs'),
+                                                                _m('MENU','Blogs'),
+                                                                _('Show all public blogs.'),
+                                                                false,
+                                                                'nav_blogs');
             }
 
             Event::handle('EndPrimaryNav', array($this->action));
