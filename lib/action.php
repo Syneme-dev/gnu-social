@@ -1130,12 +1130,20 @@ class Action extends HTMLOutputter // lawsuit
                 } else {
                     $url = $image;
                 }
-
+                 $this->elementStart('a',array('href' => 'https://plus.google.com/114517234246435711924',
+                                                                'ref'=>'publisher'));
+                                 $this->element('img', array( 'src' =>'/theme/base/images/g+128.png',
+                                                                            'width' => '40'));
+                                $this->elementEnd('a');
                 $this->element('img', array('id' => 'license_cc',
                                             'src' => $url,
                                             'alt' => common_config('license', 'title'),
                                             'width' => '80',
                                             'height' => '15'));
+
+
+
+
                 $this->text(' ');
                 // TRANS: license message in footer.
                 // TRANS: %1$s is the site name, %2$s is a link to the license URL, with a licence name set in configuration.

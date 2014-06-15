@@ -2525,4 +2525,14 @@ display:inline;
 margin-bottom:18px;
 }
 
-}/*end of @media print*/
+}
+
+.google{
+    background-position: -60px -40px;
+    height: 44px;
+    width: 44px;
+    background-image: url(/theme/base/images/googleIcon.png);
+
+}
+
+/*end of @media print*/

@@ -283,9 +283,9 @@ class PublicAction extends Action
     function showCore(){
        $this->elementStart('div', array('id' => 'core'));
     $this->element('img', array('src' => '/theme/base/mapShot.png','width'=>
-    '100%'));
+    '100%','style'=>'position:absolute;'));
      $this->element('iframe', array('src' => 'http://www.youtube.com/embed/XxSOcc9qcsI','width'=>
-        '640','height'=>'390','allowfullscreen'=>'','style'=>'position:absolute;'));
+        '640','height'=>'390','allowfullscreen'=>'','style'=>'position:absolute;margin:100px 0px 0 100px;'));
    // <iframe width="640" height="390" src="//www.youtube.com/embed/XxSOcc9qcsI" frameborder="0" allowfullscreen></iframe>
     $this->elementEnd('div');
 

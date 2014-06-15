@@ -1322,11 +1322,14 @@ p{
     border-left:0 !important;
     border-right:0 !important;
 }
+
+address img
+{
+    max-height: 40px;
+}
 .logo.photo{
-    display: none;
 }
 .fn.org{
-    display: block;
 }
 
 #site_nav_global_primary{
