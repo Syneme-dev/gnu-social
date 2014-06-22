@@ -64,9 +64,9 @@ class PublicGroupNav extends Menu
         if (Event::handle('StartPublicGroupNav', array($this))) {
             if (!common_config('singleuser', 'enabled')) {
                 // TRANS: Menu item in search group navigation panel.
-                $this->out->menuItem(common_local_url('public'), _m('MENU','Public'),
+                $this->out->menuItem(common_local_url('blogs'), _m('MENU','Public'),
                                      // TRANS: Menu item title in search group navigation panel.
-                                     _('Public timeline'), $this->actionName == 'public', 'nav_timeline_public');
+                                     _('Public timeline'), $this->actionName == 'blogs', 'nav_timeline_public');
             }
 
             // TRANS: Menu item in search group navigation panel.

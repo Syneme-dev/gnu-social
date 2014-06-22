@@ -49,7 +49,7 @@ class HomeStubNav extends Menu
 {
     function getItems()
     {
-        return array(array('top',
+        return array(array('blogs',
                            null,
                            // TRANS: Menu item in personal group navigation menu.
                            _m('MENU','Home'),

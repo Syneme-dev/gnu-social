@@ -106,7 +106,12 @@ class DocListNav extends Menu
                                  array('title' => 'help'),
                                  _m('MENU', 'Help'),
                                  _('Getting started'),
-                                 'nav_doc_help'));
+                                 'nav_doc_help'),
+                                 array('doc',
+                                                                  array('title' => 'g+'),
+                                                                  _m('MENU', 'Google'),
+                                                                  _('Google Plug'),
+                                                                  'nav_doc_google'));
 
             //Event::handle('EndDocsMenu', array(&$items));
         }

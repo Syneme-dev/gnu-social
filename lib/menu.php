@@ -109,8 +109,11 @@ class Menu extends Widget
         if (empty($id)) {
             $id = $this->menuItemID($actionName, $args);
         }
-
         $url = common_local_url($actionName, $args);
+
+        if($label=="Google"){
+        $url="https://plus.google.com/114517234246435711924";
+        }
 
         $this->out->menuItem($url,
                              $label,

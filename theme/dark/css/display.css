@@ -1326,6 +1326,11 @@ p{
 address img
 {
     max-height: 40px;
+    float: left;
+}
+address img + .fn{
+    display: block;
+    padding-left: 20px;
 }
 .logo.photo{
 }
@@ -1335,7 +1340,6 @@ address img
 #site_nav_global_primary{
     height: 24px ;
     background: #333333 none ;
-    /*background: #3c4b5e none !important;*/
     -webkit-border-top-right-radius:0;
 }
 #aside_primary
@@ -1385,7 +1389,7 @@ address img
 
 #site_nav_local_views
 {
-    width:44px !important;
+    width:40px ;
 }
 #nav_local_default h3
 {
@@ -1403,12 +1407,21 @@ address img
     text-shadow:none !important;
 }
 
-
+#site_nav_local_views .nav{
+    width:40px;
+}
 #site_nav_local_views .nav li
 {
     margin: 0 0 1px !important;
+    padding: 0;
+    width: 40px;
+    
 
 }
+#site_nav_local_views .nav li:focus{
+    width: 40px !important;
+}
+
 #site_nav_local_views .nav li a
 {
     text-indent:-5000px;/*Note:use to hide the text.*/
@@ -1417,7 +1430,54 @@ address img
     overflow: hidden;
     font-size: 20pt;
     background-color: #3c4b5e !important;
-    color: #333333 !important;
+    color: #333333 ;
+}
+
+/*show text for profile settings pages*/
+#profilesettings #site_nav_local_views .nav li a,
+#avatarsettings #site_nav_local_views .nav li a,
+#passwordsettings #site_nav_local_views .nav li a,
+#emailsettings #site_nav_local_views .nav li a,
+#urlsettings #site_nav_local_views .nav li a,
+#openidsettings #site_nav_local_views .nav li a,
+#oauthconnectionssettings #site_nav_local_views .nav li a,
+#siteadminpanel #site_nav_local_views .nav li a,
+#useradminpanel #site_nav_local_views .nav li a,
+#accessadminpanel #site_nav_local_views .nav li a,
+#pathsadminpanel #site_nav_local_views .nav li a,
+#sessionsadminpanel #site_nav_local_views .nav li a,
+#sitenoticeadminpanel #site_nav_local_views .nav li a,
+#licenseadminpanel #site_nav_local_views .nav li a,
+#pluginsadminpanel #site_nav_local_views .nav li a,
+
+
+
+
+
+
+#register #site_nav_local_views .nav li a,
+#openidlogin #site_nav_local_views .nav li a,
+#login #site_nav_local_views .nav li a
+{
+    text-indent:0;
+    height: 30px !important;
+    width: 40px !important;
+    overflow: hidden;
+    padding: 5px 0 5px 0;
+    font-size: 7pt;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration:none;
+    background-color: #3c4b5e !important;
+    color: #333333 ;
+}
+
+#nav_return_top a,#nav_timeline_personal a{
+    text-indent:-5000px !important;/*Note:use to hide the text.*/
+    height: 40px !important;
+    width: 40px !important;
+    overflow: hidden;
+    background-color: #3c4b5e !important;
 }
 
 
@@ -1444,15 +1504,16 @@ address img
 #site_nav_local_views a
 {
     width:100% !important;
-    padding: 0 0 0 4px !important;
+    /*padding: 0 0 0 4px !important;*/
 }
+
 
 #site_nav_local_views li a:hover
 {
     /*width:100% !important;*/
     /*background:none #3c4b5e !important;*/
-    padding: 0 0 0 4px !important;
     border-radius:0 !important;
+    color:#b7b7b7 !important;
     /*color: #b7b7b7 !important;*/
 }
 
@@ -1628,8 +1689,20 @@ color: #b7b7b7 !important;
     background-image: url(../images/icons/mouseOver/PublicTimeline.png) ;
 }
 
-
-
+#nav_doc_google a:before {
+    /*content: '';*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+    /*background: url(http://placehold.it/300);*/
+    opacity: .7;
+}
+#nav_doc_google a{
+    background: url(../images/googleplus.png);
+    background-size: contain;
+}
 
 
 
@@ -1710,6 +1783,8 @@ color: #b7b7b7 !important;
 .form_notice label.notice_data-attach:hover{
     background: url(../images/icons/mouseOver/Attachement.png) 0 0;
 }
+
+
 
 
 
@@ -1876,4 +1951,9 @@ input[type=text],input[type=password]
 {
     width: 100% !important;
     margin-left: 0 !important;
+}
+
+/*hide the subscribe tag*/
+#nav_tagsubs{
+    display: none;
 }

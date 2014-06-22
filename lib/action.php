@@ -588,16 +588,20 @@ class Action extends HTMLOutputter // lawsuit
         $this->elementStart('address', array('id' => 'site_contact',
                                              'class' => 'vcard'));
         if (Event::handle('StartAddressData', array($this))) {
-            if (common_config('singleuser', 'enabled')) {
-                $user = User::singleUser();
-                $url = common_local_url('showstream',
-                                        array('nickname' => $user->nickname));
-            } else if (common_logged_in()) {
-                $cur = common_current_user();
-                $url = common_local_url('all', array('nickname' => $cur->nickname));
-            } else {
-                $url = common_local_url('public');
-            }
+            //if (common_config('singleuser', 'enabled')) {
+            //    $user = User::singleUser();
+            //    $url = common_local_url('showstream',
+            //                            array('nickname' => $user->nickname));
+            //} else if (common_logged_in()) {
+            //    $cur = common_current_user();
+            //    $url = common_local_url('all', array('nickname' => $cur->nickname));
+            //} else {
+            //    $url = common_local_url('public');
+            //}
+            //
+
+            //Note:always to show world map for logo click.
+            $url = common_local_url('public');
 
             $this->elementStart('a', array('class' => 'url home bookmark',
                                            'href' => $url));
@@ -1130,11 +1134,11 @@ class Action extends HTMLOutputter // lawsuit
                 } else {
                     $url = $image;
                 }
-                 $this->elementStart('a',array('href' => 'https://plus.google.com/114517234246435711924',
-                                                                'ref'=>'publisher'));
-                                 $this->element('img', array( 'src' =>'/theme/base/images/g+128.png',
-                                                                            'width' => '40'));
-                                $this->elementEnd('a');
+               //  $this->elementStart('a',array('href' => 'https://plus.google.com/114517234246435711924',
+                //                                                'ref'=>'publisher'));
+                 //                $this->element('img', array( 'src' =>'/theme/base/images/g+128.png',
+                  //                                                          'width' => '40'));
+                   //             $this->elementEnd('a');
                 $this->element('img', array('id' => 'license_cc',
                                             'src' => $url,
                                             'alt' => common_config('license', 'title'),
