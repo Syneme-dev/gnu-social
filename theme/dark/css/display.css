@@ -700,7 +700,6 @@
     }
 
     /* Bookmark specific styles */
-    /* TODO separate base styles and move to plugin */
 
     .bookmark h3 {
         margin: 0 0 8px 0;
@@ -829,14 +828,13 @@
     }
 
     /* Onboard specific styles */
-    /* TODO move to plugin */
 
     #cboxOverlay{
         background: url(../images/lightbox_bg.png) repeat 0 0 !important;
     }
 
     #cboxContent{
-        background: #fff url(../logo.png) no-repeat 10px bottom !important;
+        background: #fff url(../logobak.png) no-repeat 10px bottom !important;
     }
 
     .onboard_iframe {
@@ -1700,8 +1698,12 @@ color: #b7b7b7 !important;
     opacity: .7;
 }
 #nav_doc_google a{
-    background: url(../images/googleplus.png);
+    background: url(../images/google.png);
     background-size: contain;
+}
+
+#nav_doc_google a:hover,#nav_doc_google.current a{
+    background-image: url(../images/mouseOver/googleH.png) ;
 }
 
 
@@ -1954,6 +1956,11 @@ input[type=text],input[type=password]
 }
 
 /*hide the subscribe tag*/
-#nav_tagsubs{
+#nav_tagsubs,#nav_lists{
     display: none;
+}
+
+#recaptcha_area{
+    float: left;
+    padding-left: 10px;
 }
