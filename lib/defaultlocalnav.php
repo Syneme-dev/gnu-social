@@ -66,6 +66,9 @@ class DefaultLocalNav extends Menu
              $docs = new DocListNav($this->action);
                                 $this->submenu(_m('MENU','Docs'), $docs);
 
+                                 $google = new GoogleNav($this->action);
+                                 $this->submenu(_m('MENU','Google'), $google);
+
             if (!empty($user)) {
                 $sn = new GroupsNav($this->action, $user);
                 if ($sn->haveGroups()) {
@@ -107,14 +110,28 @@ class DocListNav extends Menu
                                  _m('MENU', 'Help'),
                                  _('Getting started'),
                                  'nav_doc_help'),
-                                 array('doc',
-                                                                  array('title' => 'g+'),
-                                                                  _m('MENU', 'Google'),
-                                                                  _('Google Plug'),
-                                                                  'nav_doc_google'));
+                                 );
 
             //Event::handle('EndDocsMenu', array(&$items));
         }
         return $items;
     }
 }
+
+class GoogleNav extends Menu
+{
+    function getItems()
+    {
+        $items = array();
+        if (Event::handle('StartDocsMenu', array(&$items))) {
+            $items = array( array('doc',
+                                array('title' => 'g+'),
+                                  _m('MENU', 'Google'),
+                                  _('Google Plug'),
+                                  'nav_doc_google'));
+            //Event::handle('EndDocsMenu', array(&$items));
+        }
+        return $items;
+    }
+}
+

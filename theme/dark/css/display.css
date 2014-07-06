@@ -323,14 +323,14 @@
 
     #content h1 {
         min-height: 24px;
-        background: #3c4b5e ;
         border-bottom:0;
         font-size:1em ;
         padding-left: 4px ;
         text-shadow:none ;
         padding-bottom:0;
         letter-spacing: 0;
-        color: #000000;
+        color: #3c4b5e;
+        border-bottom: 1px solid #3c4b5e;
         font-weight: bold;
     }
 
@@ -1364,13 +1364,13 @@ address img + .fn{
 #aside_primary h2,#nav_local_default h3
 {
     height: 24px !important;
-    background: #3c4b5e none !important;
-    border-bottom:0 !important;
+    /*background: #3c4b5e none !important;*/
+    border-bottom:1px solid #3c4b5d !important;
     font-size:1em !important;
     padding-left: 4px !important;
     text-shadow:none !important;
     padding-bottom:0 !important;
-    color:black !important;
+    color:#3c4b5d !important;
     letter-spacing: 0 !important;
     font-weight: bold;
 }
@@ -1413,7 +1413,7 @@ address img + .fn{
     margin: 0 0 1px !important;
     padding: 0;
     width: 40px;
-    
+
 
 }
 #site_nav_local_views .nav li:focus{
@@ -1582,7 +1582,7 @@ th#Members
 }
 
 .entity_actions a, .entity_actions input, .entity_actions p{
-color: #b7b7b7 !important;
+    color: #b7b7b7 !important;
 }
 
 #profile_directory .alpha_nav .last.current
@@ -1820,7 +1820,7 @@ ul#nav_groups
 /*body#inbox.user_in h1,body#all.user_in h1,body#replies.user_in h1,*/
 /*body#showfavorites.user_in h1,body#bookmarks.user_in h1,body#public.user_in h1*/
 /*{*/
-    /*display: none;*/
+/*display: none;*/
 /*}*/
 /*hide subscribe button background image*/
 
@@ -1878,7 +1878,7 @@ input[type=text],input[type=password]
 
 
 
- select {
+select {
     display: inline-block;
     border: 2px solid #b7b7b7;
     padding: 4px 3px 3px 5px;
@@ -1893,16 +1893,16 @@ input[type=text],input[type=password]
     border-radius: 0;
 }
 
- /*inbox page for style of page title*/
- #input_form_direct
- {
-     width:636px;
- }
+/*inbox page for style of page title*/
+#input_form_direct
+{
+    width:636px;
+}
 /*hide repeat button*/
- .notice-options .repeated,.entry-content .repeat,.form_repeat
- {
-     display: none;
- }
+.notice-options .repeated,.entry-content .repeat,.form_repeat
+{
+    display: none;
+}
 
 
 /*extend plugin css*/
