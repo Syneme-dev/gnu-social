@@ -107,19 +107,26 @@ class LoginAction extends FormAction
         if ($this->boolean('rememberme')) {
             common_rememberme($user);
         }
-
-        $url = common_get_returnto();
-
-        if ($url) {
-            // We don't have to return to it again
-            common_set_returnto(null);
-            $url = common_inject_session($url);
-        } else {
-            $url = common_local_url('all',
-                                    array('nickname' => $this->scoped->nickname));
+        echo $this->boolean('fromMac');
+        if ($this->boolean('fromMac')) {
+                      $url = common_local_url('showstream', array('nickname' => $this->scoped->nickname),array('fromMac'=>'true'));
+                      common_redirect($url, 303);
         }
+        //Note:when from mac ,goto /xujian
+        else
+        {
+                    $url = common_get_returnto();
+                    if ($url) {
+                        // We don't have to return to it again
+                        common_set_returnto(null);
+                        $url = common_inject_session($url);
+                    } else {
+                        $url = common_local_url('all',
+                                                array('nickname' => $this->scoped->nickname));
+                    }
+                    common_redirect($url, 303);
 
-        common_redirect($url, 303);
+        }
     }
 
     /**
@@ -167,10 +174,13 @@ class LoginAction extends FormAction
      */
     function showContent()
     {
+    echo $this->boolean('fromMac').'xujian';
+    $postUrl= ($this->boolean('fromMac'))? array('fromMac'=>'true'):null;
+    echo $postUrl;
         $this->elementStart('form', array('method' => 'post',
                                           'id' => 'form_login',
                                           'class' => 'form_settings',
-                                          'action' => common_local_url('login')));
+                                          'action' => common_local_url('login',null,$postUrl)));
         $this->elementStart('fieldset');
         // TRANS: Form legend on login page.
         $this->element('legend', null, _('Login to site'));
