@@ -282,7 +282,12 @@ class PublicAction extends Action
     }
     function showCore(){
        $this->elementStart('div', array('id' => 'core'));
-    $this->element('img', array('id' =>'mapView','src' => '/theme/base/mapShot.png','width'=>
+       $filename='/theme/base/mapShot.png';
+       $path=common_config('site', 'path');
+       if ($path && ($path != '/')) {
+       $filename='/'.common_config('site', 'path').'/theme/base/mapShot.png';
+       }
+    $this->element('img', array('id' =>'mapView','src' => $filename,'width'=>
     '100%','style'=>'position:absolute;','onclick'=>'if(typeof( window.isShow) ==\'undefined\'||window.isShow){ $(\'#youtubeFrame\').show();window.isShow=false;}else{$(\'#youtubeFrame\').hide();window.isShow=true;}'));
      $this->element('iframe', array('id' =>'youtubeFrame',
                                      'src' => 'http://www.youtube.com/embed/XxSOcc9qcsI',
