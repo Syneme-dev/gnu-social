@@ -98,6 +98,7 @@ if (!defined('STATUSNET')) {
     exit(1);
 }
 
+
 class ApiValidationException extends Exception { }
 
 /**
@@ -197,15 +198,11 @@ class ApiAction extends Action
         return parent::element($tag, $attrs, $content);
     }
 
-    function twitterUserArray($profile, $get_notice=false)
+function twitterUserArray($profile, $get_notice=false)
     {
         $twitter_user = array();
 
-        try {
-            $user = $profile->getUser();
-        } catch (NoSuchUserException $e) {
-            $user = null;
-        }
+        $user = $profile->getUser();
 
         $twitter_user['id'] = intval($profile->id);
         $twitter_user['name'] = $profile->getBestName();
@@ -213,25 +210,9 @@ class ApiAction extends Action
         $twitter_user['location'] = ($profile->location) ? $profile->location : null;
         $twitter_user['description'] = ($profile->bio) ? $profile->bio : null;
 
-        // TODO: avatar url template (example.com/user/avatar?size={x}x{y})
-        $twitter_user['profile_image_url'] = Avatar::urlByProfile($profile, AVATAR_STREAM_SIZE);
-        $twitter_user['profile_image_url_https'] = $twitter_user['profile_image_url'];
-
-        // START introduced by qvitter API, not necessary for StatusNet API
-        $twitter_user['profile_image_url_profile_size'] = Avatar::urlByProfile($profile, AVATAR_PROFILE_SIZE);
-        try {
-            $avatar  = Avatar::getUploaded($profile);
-            $origurl = $avatar->displayUrl();
-        } catch (Exception $e) {
-            $origurl = $twitter_user['profile_image_url_profile_size'];
-        }
-        $twitter_user['profile_image_url_original'] = $origurl;
-
-        $twitter_user['groups_count'] = $profile->getGroupCount();
-        foreach (array('linkcolor', 'backgroundcolor') as $key) {
-            $twitter_user[$key] = Profile_prefs::getConfigData($profile, 'theme', $key);
-        }
-        // END introduced by qvitter API, not necessary for StatusNet API
+        $avatar = $profile->getAvatar(AVATAR_STREAM_SIZE);
+        $twitter_user['profile_image_url'] = ($avatar) ? $avatar->displayUrl() :
+            Avatar::defaultImage(AVATAR_STREAM_SIZE);
 
         $twitter_user['url'] = ($profile->homepage) ? $profile->homepage : null;
         $twitter_user['protected'] = (!empty($user) && $user->private_stream) ? true : false;
@@ -251,6 +232,97 @@ class ApiAction extends Action
             $timezone = $user->timezone;
         }
 
+        $t = new DateTime;
+        $t->setTimezone(new DateTimeZone($timezone));
+
+        $twitter_user['utc_offset'] = $t->format('Z');
+        $twitter_user['time_zone'] = $timezone;
+        $twitter_user['statuses_count'] = $profile->noticeCount();
+
+        // Is the requesting user following this user?
+        $twitter_user['following'] = false;
+        $twitter_user['statusnet_blocking'] = false;
+        $twitter_user['notifications'] = false;
+
+        if (isset($this->auth_user)) {
+
+            $twitter_user['following'] = $this->auth_user->isSubscribed($profile);
+            $twitter_user['statusnet_blocking']  = $this->auth_user->hasBlocked($profile);
+
+            // Notifications on?
+            $sub = Subscription::pkeyGet(array('subscriber' =>
+                                               $this->auth_user->id,
+                                               'subscribed' => $profile->id));
+
+            if ($sub) {
+                $twitter_user['notifications'] = ($sub->jabber || $sub->sms);
+            }
+        }
+
+        if ($get_notice) {
+            $notice = $profile->getCurrentNotice();
+            if ($notice) {
+                // don't get user!
+                $twitter_user['status'] = $this->twitterStatusArray($notice, false);
+            }
+        }
+
+        // StatusNet-specific
+
+        $twitter_user['statusnet_profile_url'] = $profile->profileurl;
+
+        return $twitter_user;
+    }
+
+    function twitterUserArrayBakArtsmesh($profile, $get_notice=false)
+    {
+
+        var_dump(($profile instanceof Profile));
+        $twitter_user = array();
+        try {
+            $user = $profile->getUser();
+        } catch (NoSuchUserException $e) {
+            $user = null;
+        }
+
+
+        $twitter_user['id'] = intval($profile->id);
+        $twitter_user['name'] = $profile->getBestName();
+        $twitter_user['screen_name'] = $profile->nickname;
+        $twitter_user['location'] = ($profile->location) ? $profile->location : null;
+        $twitter_user['description'] = ($profile->bio) ? $profile->bio : null;
+        // TODO: avatar url template (example.com/user/avatar?size={x}x{y})
+        $twitter_user['profile_image_url'] = $profile->profileurl;
+       // $twitter_user['profile_image_url'] = Avatar::urlByProfile($profile, AVATAR_STREAM_SIZE);
+     $twitter_user['profile_image_url_profile_size']=    $twitter_user['profile_image_url_https'] = $twitter_user['profile_image_url'];
+        // START introduced by qvitter API, not necessary for StatusNet API
+       // $twitter_user['profile_image_url_profile_size'] = Avatar::urlByProfile($profile, AVATAR_PROFILE_SIZE);
+        //try {
+            //$avatar  = Avatar::getUploaded($profile);
+            //$origurl = $avatar->displayUrl();
+       // } catch (Exception $e) {
+            $origurl = $twitter_user['profile_image_url_profile_size'];
+       // }
+        $twitter_user['profile_image_url_original'] = $origurl;
+        $twitter_user['groups_count'] = $profile->getGroupCount();
+        foreach (array('linkcolor', 'backgroundcolor') as $key) {
+            $twitter_user[$key] = Profile_prefs::getConfigData($profile, 'theme', $key);
+        }
+        // END introduced by qvitter API, not necessary for StatusNet API
+        $twitter_user['url'] = ($profile->homepage) ? $profile->homepage : null;
+        $twitter_user['protected'] = (!empty($user) && $user->private_stream) ? true : false;
+        $twitter_user['followers_count'] = $profile->subscriberCount();
+        // Note: some profiles don't have an associated user
+        $twitter_user['friends_count'] = $profile->subscriptionCount();
+
+        $twitter_user['created_at'] = $this->dateTwitter($profile->created);
+
+        $twitter_user['favourites_count'] = $profile->faveCount(); // British spelling!
+        $timezone = 'UTC';
+
+        if (!empty($user) && $user->timezone) {
+            $timezone = $user->timezone;
+        }
         $t = new DateTime;
         $t->setTimezone(new DateTimeZone($timezone));
 
@@ -1238,10 +1310,9 @@ class ApiAction extends Action
     function showJsonUsers($user)
     {
         $this->initDocument('json');
-
         $users = array();
-
         if (is_array($user)) {
+
             foreach ($user as $u) {
                 $twitter_user = $this->twitterUserArray($u);
                 array_push($users, $twitter_user);
@@ -1252,9 +1323,7 @@ class ApiAction extends Action
                 array_push($users, $twitter_user);
             }
         }
-
         $this->showJsonObjects($users);
-
         $this->endDocument('json');
     }
 
