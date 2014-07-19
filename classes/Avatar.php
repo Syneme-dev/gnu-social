@@ -211,11 +211,13 @@ class Avatar extends Managed_DataObject
 
     function displayUrl()
     {
+
         $server = common_config('avatar', 'server');
         if ($server && !empty($this->filename)) {
             return Avatar::url($this->filename);
         } else {
-            return $this->url;
+         return Avatar::url($this->filename);
+          //  return $this->url;
         }
     }
 

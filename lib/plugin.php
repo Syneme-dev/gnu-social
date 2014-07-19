@@ -193,9 +193,9 @@ class Plugin
     {
         // get relative path.
                    if (@file_exists(INSTALLDIR.'/local/plugins/'.$plugin.'/'.$relative)) {
-                        $path = common_config('site', 'path') . 'local/plugins/';
+                        $path = 'local/plugins/';
                     } else {
-                        $path = common_config('site', 'path') . 'plugins/';
+                        $path = 'plugins/';
                     }
         $relatedPath= $path.$this->name()."/".$relative;
         return $relatedPath;

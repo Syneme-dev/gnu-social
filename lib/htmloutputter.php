@@ -433,11 +433,11 @@ class HTMLOutputter extends XMLOutputter
                     }
                     if(strstr($src,"plugins"))
                     {
-                    $path='';
+                    $path=common_config('site', 'path').'/';
                     }
                     else
                     {
-                    $path='/js/';
+                   // $path=$path.'/js/';
                     }
                     $src = $path.$src . '?version=' . GNUSOCIAL_VERSION;
                     //$src = $protocol.'://'.$server.$path.$src . '?version=' . GNUSOCIAL_VERSION;
@@ -489,12 +489,14 @@ class HTMLOutputter extends XMLOutputter
      */
     function cssLink($src,$theme=null,$media=null)
     {
+
         if(Event::handle('StartCssLinkElement', array($this,&$src,&$theme,&$media))) {
             $url = parse_url($src);
             if( empty($url['scheme']) && empty($url['host']) && empty($url['query']) && empty($url['fragment']))
             {
                 if(file_exists(Theme::file($src,$theme))){
                    $src = Theme::path($src, $theme);
+
                 }
                 else{
                     $src = common_path($src, StatusNet::isHTTPS());

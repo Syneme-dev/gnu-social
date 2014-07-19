@@ -112,7 +112,7 @@ class LoginAction extends FormAction
                       $url = common_local_url('showstream', array('nickname' => $this->scoped->nickname),array('fromMac'=>'true'));
                       common_redirect($url, 303);
         }
-        //Note:when from mac ,goto /xujian
+        //Note:when from mac ,goto /nickname
         else
         {
                     $url = common_get_returnto();
@@ -174,9 +174,7 @@ class LoginAction extends FormAction
      */
     function showContent()
     {
-    echo $this->boolean('fromMac').'xujian';
     $postUrl= ($this->boolean('fromMac'))? array('fromMac'=>'true'):null;
-    echo $postUrl;
         $this->elementStart('form', array('method' => 'post',
                                           'id' => 'form_login',
                                           'class' => 'form_settings',
