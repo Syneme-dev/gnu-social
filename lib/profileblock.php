@@ -129,6 +129,7 @@ abstract class ProfileBlock extends Widget
             $this->out->element('a',
                                 array('href' => $homepage,
                                       'rel' => 'me',
+                                      'target'=>'_blank',
                                       'class' => 'profile_block_homepage'),
                                 $homepage);
         }

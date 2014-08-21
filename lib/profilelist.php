@@ -334,6 +334,7 @@ class ProfileListItem extends Widget
     function homepageAttributes()
     {
         return array('href' => $this->profile->homepage,
+        'target'=>'_blank',
                      'class' => 'url');
     }
 }

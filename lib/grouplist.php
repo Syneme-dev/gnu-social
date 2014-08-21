@@ -125,6 +125,7 @@ class GroupList extends Widget
         if ($this->group->homepage) {
             $this->out->text(' ');
             $this->out->elementStart('a', array('href' => $this->group->homepage,
+            'target'=>'_blank',
                                                 'class' => 'url'));
             $this->out->raw($this->highlight($this->group->homepage));
             $this->out->elementEnd('a');

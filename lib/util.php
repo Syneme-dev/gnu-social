@@ -1043,6 +1043,8 @@ function common_linkify($url) {
         $attrs['rel'] = 'nofollow external';
     }
 
+    $attrs['target']='_blank';
+
     return XMLStringer::estring('a', $attrs, $url);
 }
 
