@@ -353,6 +353,10 @@ class Router
                         array('action' => 'ApiTimelinePublic',
                               'format' => '(xml|json|rss|atom|as)'));
 
+
+
+
+
             $m->connect('api/statuses/friends_timeline/:id.:format',
                         array('action' => 'ApiTimelineFriends',
                               'id' => Nickname::INPUT_FMT,
@@ -844,6 +848,13 @@ class Router
                               'tag'    => self::REGEX_TAG,
                               'format' => '(xml|json|rss|atom|as)'));
 
+                               $m->connect('api/statusnet/allTags.:format',
+                                                             array('action' => 'ApiAllPersonalTag',
+                                                             'format' => '(xml|json|rss|atom|as)'));
+
+
+
+
             // media related
             $m->connect(
                 'api/statusnet/media/upload',
@@ -1156,6 +1167,7 @@ class Router
                             array('action' => 'showstream'),
                             array('nickname' => Nickname::DISPLAY_FMT));
             }
+
 
             // AtomPub API
 

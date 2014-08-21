@@ -325,7 +325,6 @@ function main()
     }
 
     $action_class = ucfirst($action).'Action';
-
     if (!class_exists($action_class)) {
         // TRANS: Error message displayed when trying to perform an undefined action.
         $cac = new ClientErrorAction(_('Unknown action'), 404);
