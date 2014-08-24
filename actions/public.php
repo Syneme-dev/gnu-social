@@ -282,13 +282,39 @@ class PublicAction extends Action
     }
     function showCore(){
        $this->elementStart('div', array('id' => 'core'));
-       $filename='/theme/base/mapShot.png';
+       $filename='/theme/base/Map.png';
        $path=common_config('site', 'path');
        if ($path && ($path != '/')) {
-       $filename='/'.common_config('site', 'path').'/theme/base/mapShot.png';
+       $filename='/'.common_config('site', 'path').'/theme/base/Map.png';
        }
+          $this->element('div', array('id' =>'mask',
+          style=>'position:absolute;z-index:1;width:100%;height:800px;background-color:rgba(180,180,180,0.7);'));
+           $this->element('a', array(href=>'#',
+                    'style'=>'position:absolute;z-index:3;right:70px;color:#3C4B5E;',
+                    'onclick'=>' $(\'#circle\').css(\'z-index\',\'0\');$(\'#mapView\').css(\'z-index\',\'2\');'
+                    ), _('Live'));
+                   //  $this->element('a', array(href=>'#'),  _('Live'));
+                     //                                       $this->elementEnd('div');
+                      $this->element('div', array(
+                                        'style'=>'position:absolute;z-index:3;right:60px;color:#3C4B5E;'
+                                        ),
+                                        _('|'));
+                     $this->element('a', array(href=>'#',
+                                      'style'=>'position:absolute;right:10px;z-index:3;color:#3C4B5E;',
+                                       'onclick'=>' $(\'#circle\').css(\'z-index\',\'2\');$(\'#mapView\').css(\'z-index\',\'0\');'
+                                        ),_('Archive'));
+                                   //      $this->element('a', array(href=>'#'),  _('Archive'));
+                                     //   $this->elementEnd('div');
     $this->element('img', array('id' =>'mapView','src' => $filename,'width'=>
-    '100%','style'=>'position:absolute;','onclick'=>'if(typeof( window.isShow) ==\'undefined\'||window.isShow){ $(\'#youtubeFrame\').show();window.isShow=false;}else{$(\'#youtubeFrame\').hide();window.isShow=true;}'));
+    '100%','style'=>'position:absolute;z-index:0;','onclick'=>'if(typeof( window.isShow) ==\'undefined\'||window.isShow){ $(\'#youtubeFrame\').show();window.isShow=false;}else{$(\'#youtubeFrame\').hide();window.isShow=true;}'));
+    $this->element('iframe', array('id' =>'circle',
+                                        'src' => 'http://artsmesh.io/circle/circle.html',
+                                        'width'=>'1200',
+                                        'height'=>'768',
+                                        'allowfullscreen'=>'',
+                                        frameborder=>'no',
+                                        'style'=>'position:absolute;z-index:2;'));
+
      $this->element('iframe', array('id' =>'youtubeFrame',
                                      'src' => 'http://www.youtube.com/embed/XxSOcc9qcsI',
                                      'width'=>'640',
