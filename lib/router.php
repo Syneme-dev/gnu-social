@@ -1038,6 +1038,7 @@ class Router
                 $m->connect('', array('action' => 'public'));
 
                 $m->connect('blogs', array('action' => 'blogs'));
+                 $m->connect('clustermap', array('action' => 'clustermap'));
                 //$m->connect('', array('action' => 'group'));
 
                 $m->connect('rss', array('action' => 'publicrss'));
