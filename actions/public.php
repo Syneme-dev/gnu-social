@@ -287,26 +287,22 @@ class PublicAction extends Action
        if ($path && ($path != '/')) {
        $filename='/'.common_config('site', 'path').'/theme/base/Map.png';
        }
-          $this->element('div', array('id' =>'mask',
-          style=>'position:absolute;z-index:1;width:100%;height:800px;background-color:rgba(180,180,180,0.7);'));
-           $this->element('a', array(href=>'#',
-                    'style'=>'position:absolute;z-index:3;right:70px;color:#3C4B5E;',
-                    'onclick'=>' $(\'#circle\').css(\'z-index\',\'0\');$(\'#mapView\').css(\'z-index\',\'2\');'
-                    ), _('Live'));
-                   //  $this->element('a', array(href=>'#'),  _('Live'));
-                     //                                       $this->elementEnd('div');
-                      $this->element('div', array(
-                                        'style'=>'position:absolute;z-index:3;right:60px;color:#3C4B5E;'
-                                        ),
-                                        _('|'));
-                     $this->element('a', array(href=>'#',
-                                      'style'=>'position:absolute;right:10px;z-index:3;color:#3C4B5E;',
-                                       'onclick'=>' $(\'#circle\').css(\'z-index\',\'2\');$(\'#mapView\').css(\'z-index\',\'0\');'
-                                        ),_('Archive'));
-                                   //      $this->element('a', array(href=>'#'),  _('Archive'));
-                                     //   $this->elementEnd('div');
-    $this->element('img', array('id' =>'mapView','src' => $filename,'width'=>
-    '100%','style'=>'position:absolute;z-index:0;','onclick'=>'if(typeof( window.isShow) ==\'undefined\'||window.isShow){ $(\'#youtubeFrame\').show();window.isShow=false;}else{$(\'#youtubeFrame\').hide();window.isShow=true;}'));
+          //$this->element('div', array('id' =>'mask',
+          //style=>'position:absolute;z-index:1;width:100%;height:800px;background-color:rgba(180,180,180,0.7);'));
+          // $this->element('a', array(href=>'#',
+            //        'style'=>'position:absolute;z-index:3;right:70px;color:#3C4B5E;',
+              //      'onclick'=>' $(\'#circle\').css(\'z-index\',\'0\');$(\'#mapView\').css(\'z-index\',\'2\');'
+                //    ), _('Live'));
+                   //   $this->element('div', array(
+                     //                   'style'=>'position:absolute;z-index:3;right:60px;color:#3C4B5E;'
+                       //                 ),
+                         //               _('|'));
+                    // $this->element('a', array(href=>'#',
+                      //                'style'=>'position:absolute;right:10px;z-index:3;color:#3C4B5E;',
+                        //               'onclick'=>' $(\'#circle\').css(\'z-index\',\'2\');$(\'#mapView\').css(\'z-index\',\'0\');'
+                          //              ),_('Archive'));
+   // $this->element('img', array('id' =>'mapView','src' => $filename,'width'=>
+   // '100%','style'=>'position:absolute;z-index:0;','onclick'=>'if(typeof( window.isShow) ==\'undefined\'||window.isShow){ $(\'#youtubeFrame\').show();window.isShow=false;}else{$(\'#youtubeFrame\').hide();window.isShow=true;}'));
     $this->element('iframe', array('id' =>'circle',
                                         'src' => 'http://artsmesh.io/circle/circle.html',
                                         'width'=>'1200',
@@ -315,18 +311,16 @@ class PublicAction extends Action
                                         frameborder=>'no',
                                         'style'=>'position:absolute;z-index:2;'));
 
-     $this->element('iframe', array('id' =>'youtubeFrame',
-                                     'src' => 'http://www.youtube.com/embed/XxSOcc9qcsI',
-                                     'width'=>'640',
-                                     'height'=>'390',
-                                     'allowfullscreen'=>'',
-                                     'style'=>'position:absolute;margin:100px 0px 0 100px;display:none;'));
+    // $this->element('iframe', array('id' =>'youtubeFrame',
+      //                               'src' => 'http://www.youtube.com/embed/XxSOcc9qcsI',
+        //                             'width'=>'640',
+          //                           'height'=>'390',
+            //                         'allowfullscreen'=>'',
+              //                       'style'=>'position:absolute;margin:100px 0px 0 100px;display:none;'));
    // <iframe width="640" height="390" src="//www.youtube.com/embed/XxSOcc9qcsI" frameborder="0" allowfullscreen></iframe>
     $this->elementEnd('div');
 
     }
-   // function showLogo(){
-    //}
 
     function showAnonymousMessage()
     {

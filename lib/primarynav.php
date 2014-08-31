@@ -54,7 +54,7 @@ class PrimaryNav extends Menu
         if (Event::handle('StartPrimaryNav', array($this->action))) {
         $this->action->menuItem(common_local_url('blogs'),
         _m('MENU','Blogs'), _('Show all public blogs.'), false,'nav_blogs');
-        $this->action->menuItem(common_local_url('clustermap'),_m('MENU','Clusters'), _('Show clusters.'),false,'nav_clusters');
+        //$this->action->menuItem(common_local_url('clustermap'),_m('MENU','Clusters'), _('Show clusters.'),false,'nav_clusters');
             if (!empty($user)) {
                 $this->action->menuItem(common_local_url('profilesettings'),
                                 // TRANS: Menu item in primary navigation panel.
