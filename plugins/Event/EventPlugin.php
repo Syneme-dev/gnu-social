@@ -75,6 +75,9 @@ class EventPlugin extends MicroappPlugin
     {
         $m->connect('main/event/new',
                     array('action' => 'newevent'));
+                     $m->connect('api/allevent.:format',
+                                        array('action' => 'userevents',
+                                         'format' => '(xml|json|rss|atom|as)'));
         $m->connect('main/event/rsvp',
                     array('action' => 'newrsvp'));
         $m->connect('main/event/rsvp/cancel',

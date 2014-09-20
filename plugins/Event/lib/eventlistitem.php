@@ -77,6 +77,18 @@ class EventListItem extends NoticeListItemAdapter
                           array('href' => $event->url,
                                 'class' => 'event-title entry-title summary'),
                           $event->title);
+                           $out->element('br');
+                          if( strripos($event->url,'www.youtube.com/embed'))
+                                      {
+                                          $out->element('iframe',
+                                                    array('src' => $event->url,
+                                                          'frameborder'=>0,
+                                                          'border'=>0,
+                                                           'allowfullscreen'=>'',
+                                                          'class' => 'event-title entry-title summary'),
+                                                    $event->title);
+                                      }
+
         } else {
             $out->text($event->title);
         }

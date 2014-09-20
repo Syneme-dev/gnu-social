@@ -121,7 +121,7 @@ class Happening extends Managed_DataObject
         $ev->title       = $title;
         $ev->location    = $location;
         $ev->description = $description;
-        $ev->url         = $url;
+        $ev->url         = strtolower($url);
 
         if (array_key_exists('created', $options)) {
             $ev->created = $options['created'];
@@ -186,7 +186,35 @@ class Happening extends Managed_DataObject
 
         return $saved;
     }
+     static function getEvents($userId)
+        {
+           // $events  = Happening::getKV('profile_id', $userId);
+           $notice = new Happening();
 
+                       $notice->whereAdd("profile_id = '$userId'");
+
+                   //$notice->orderBy('created DESC');
+
+                   if ($notice->find()) {
+                       while ($notice->fetch()) {
+                           $notices[] = clone($notice);
+                       }
+                   }
+            return $notices;
+        }
+     static function getAllVideoEvents()
+            {
+               $notice = new Happening();
+                           $notice->whereAdd("url like '%www.youtube.com/embed%'");
+                       //$notice->orderBy('created DESC');
+
+                       if ($notice->find()) {
+                           while ($notice->fetch()) {
+                               $notices[] = clone($notice);
+                           }
+                       }
+                return $notices;
+            }
     function getNotice()
     {
         return Notice::getKV('uri', $this->uri);
