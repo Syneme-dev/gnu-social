@@ -144,7 +144,13 @@ class Profile extends Managed_DataObject
 
     public function getAvatar($width, $height=null)
     {
+        try{
         return Avatar::byProfile($this, $width, $height);
+        }
+        catch(Exception $e)
+        {
+
+        }
     }
 
     public function setOriginal($filename)

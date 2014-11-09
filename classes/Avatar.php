@@ -135,8 +135,8 @@ class Avatar extends Managed_DataObject
             throw new NoAvatarException($target, $avatar);
         }
         if (!file_exists(Avatar::path($avatar->filename))) {
-            // The delete call may be odd for, say, unmounted filesystems
-            // that cause a file to currently not exist, but actually it does...
+//             The delete call may be odd for, say, unmounted filesystems
+//             that cause a file to currently not exist, but actually it does...
             $avatar->delete();
             throw new NoAvatarException($target, $avatar);
         }

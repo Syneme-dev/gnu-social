@@ -92,6 +92,7 @@ class ApiGroupMembershipAction extends ApiPrivateAuthAction
             $this->showTwitterXmlUsers($this->profiles);
             break;
         case 'json':
+
             $this->showJsonUsers($this->profiles);
             break;
         default:

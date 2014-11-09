@@ -748,6 +748,9 @@ class Router
             $m->connect('api/statusnet/groups/list_all.:format',
                         array('action' => 'ApiGroupListAll',
                               'format' => '(xml|json|rss|atom)'));
+            $m->connect('api/statusnet/groups/list_details.:format',
+                array('action' => 'ApiGroupListDetails',
+                    'format' => '(xml|json|rss|atom)'));
 
             $m->connect('api/statusnet/groups/membership/:id.:format',
                         array('action' => 'ApiGroupMembership',

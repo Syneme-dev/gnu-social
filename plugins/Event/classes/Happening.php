@@ -142,32 +142,36 @@ class Happening extends Managed_DataObject
 
         // TRANS: Event description. %1$s is a title, %2$s is start time, %3$s is end time,
         // TRANS: %4$s is location, %5$s is a description.
-        $content = sprintf(_m('"%1$s" %2$s - %3$s (%4$s): %5$s'),
+        $formatStr='"%1$s" %2$s - %3$s (%4$s): %5$s';
+//        $formatStr='<a class="taggedlink" href="%6$s">%1$s</a>  %2$s - %3$s (%4$s): %5$s';
+
+        $content = sprintf(_m($formatStr),
                            $title,
                            common_exact_date($ev->start_time),
                            common_exact_date($ev->end_time),
                            $location,
-                           $description);
+                           $description,$url);
 
         // TRANS: Rendered event description. %1$s is a title, %2$s is start time, %3$s is start time,
         // TRANS: %4$s is end time, %5$s is end time, %6$s is location, %7$s is description.
         // TRANS: Class names should not be translated.
+        $titleLinkUrl=empty($url)? $ev->uri :$url;
+        $titleLink='<a class="taggedlink" href="'.$titleLinkUrl.'">'.htmlspecialchars($title).'</a>';
         $rendered = sprintf(_m('<span class="vevent">'.
                               '<span class="summary">%1$s</span> '.
-                              '<abbr class="dtstart" title="%2$s">%3$s</a> - '.
-                              '<abbr class="dtend" title="%4$s">%5$s</a> '.
-                              '(<span class="location">%6$s</span>): '.
-                              '<span class="description">%7$s</span> '.
+                                '  %2$s - %3$s  '.
+                              '(<span class="location">%4$s</span>): '.
+                              '<span class="description">%5$s</span> '.
                               '</span>'),
-                            htmlspecialchars($title),
-                            htmlspecialchars(common_date_iso8601($ev->start_time)),
-                            htmlspecialchars(common_exact_date($ev->start_time)),
-                            htmlspecialchars(common_date_iso8601($ev->end_time)),
-                            htmlspecialchars(common_exact_date($ev->end_time)),
+                            $titleLink,
+            common_exact_date($ev->start_time),
+            common_exact_date($ev->end_time),
                             htmlspecialchars($location),
                             htmlspecialchars($description));
 
-        $options = array_merge(array('object_type' => Happening::OBJECT_TYPE),
+        $options = array_merge(array('object_type' => Happening::OBJECT_TYPE,
+                                    'rendered' => $rendered),
+
                                $options);
 
         if (!array_key_exists('uri', $options)) {
