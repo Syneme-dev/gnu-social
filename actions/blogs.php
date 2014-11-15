@@ -40,9 +40,9 @@ require_once INSTALLDIR.'/lib/feedlist.php';
 define('MAX_PUBLIC_PAGE', 100);
 
 /**
- * Action for displaying the public stream
+ * Action for displaying the blogs stream
  *
- * @category Public
+ * @category Blogs
  * @package  StatusNet
  * @author   Evan Prodromou <evan@status.net>
  * @license  http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License version 3.0
@@ -79,7 +79,7 @@ class BlogsAction extends Action
         $this->page = ($this->arg('page')) ? ($this->arg('page')+0) : 1;
 
         if ($this->page > MAX_PUBLIC_PAGE) {
-            // TRANS: Client error displayed when requesting a public timeline page beyond the page limit.
+            // TRANS: Client error displayed when requesting a blogs timeline page beyond the page limit.
             // TRANS: %s is the page limit.
             $this->clientError(sprintf(_('Beyond the page limit (%s).'), MAX_PUBLIC_PAGE));
         }
@@ -100,8 +100,8 @@ class BlogsAction extends Action
                                             NOTICES_PER_PAGE + 1);
 
         if (!$this->notice) {
-            // TRANS: Server error displayed when a public timeline cannot be retrieved.
-            $this->serverError(_('Could not retrieve public timeline.'));
+            // TRANS: Server error displayed when a blogs timeline cannot be retrieved.
+            $this->serverError(_('Could not retrieve blogs timeline.'));
         }
 
         if($this->page > 1 && $this->notice->N == 0){
@@ -115,7 +115,7 @@ class BlogsAction extends Action
     /**
      * handle request
      *
-     * Show the public stream, using recipe method showPage()
+     * Show the blogs stream, using recipe method showPage()
      *
      * @param array $args arguments, mostly unused
      *
@@ -136,7 +136,7 @@ class BlogsAction extends Action
     function title()
     {
         if ($this->page > 1) {
-            // TRANS: Title for all public timeline pages but the first.
+            // TRANS: Title for all blogs timeline pages but the first.
             // TRANS: %d is the page number.
             return sprintf(_('Public timeline, page %d'), $this->page);
         } else {
@@ -238,7 +238,7 @@ class BlogsAction extends Action
         }
 
         $this->pagination($this->page > 1, $cnt > NOTICES_PER_PAGE,
-                          $this->page, 'public');
+                          $this->page, 'blogs');
     }
 
     function showSections()
