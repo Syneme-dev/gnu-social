@@ -171,17 +171,7 @@ class ApiGroupListDetailsAction extends ApiPrivateAuthAction
                 $profile->followers=$followers;
                 $profile->followerNames=$followerNames;
                 $group->members=clone($profile);
-//                var_dump($profile->_items);
-
-//
-
             }
-//            foreach ($profile->_items as $profileItem){
-//                $singleProfile->name=$group->nickname.".".$profileItem->nickname;
-//                $singleProfile->imports=$profileItem->followerNames;
-//                $singleProfile->size=3300;
-//                $detailDatas[]=clone($singleProfile);
-//            }
             $groups[] = clone($group);
 
         }
