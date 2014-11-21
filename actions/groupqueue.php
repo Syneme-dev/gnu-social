@@ -157,6 +157,20 @@ class GroupQueueList extends GroupMemberList
     {
         return new GroupQueueListItem($profile, $this->group, $this->action);
     }
+    function showProfiles()
+    {
+        $cnt = $this->profile->N;
+        $profiles = array();
+        while ($this->profile->fetch()) {
+            $profiles[] = clone($this->profile);
+        }
+        $max = min($cnt, $this->maxProfiles());
+        for ($i = 0; $i < $max; $i++) {
+            $pli = $this->newListItem($profiles[$i]);
+            $pli->show();
+        }
+        return $cnt;
+    }
 }
 
 // @todo FIXME: documentation missing.
