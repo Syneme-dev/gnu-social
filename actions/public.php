@@ -35,8 +35,6 @@ require_once INSTALLDIR.'/lib/publicgroupnav.php';
 require_once INSTALLDIR.'/lib/noticelist.php';
 require_once INSTALLDIR.'/lib/feedlist.php';
 
-// Farther than any human will go
-
 define('MAX_PUBLIC_PAGE', 100);
 
 /**
@@ -85,30 +83,23 @@ class PublicAction extends Action
         }
 
         common_set_returnto($this->selfUrl());
-
         $this->userProfile = Profile::current();
-
         $user = common_current_user();
-
         if (!empty($user) && $user->streamModeOnly()) {
             $stream = new PublicNoticeStream($this->userProfile);
         } else {
             $stream = new ThreadingPublicNoticeStream($this->userProfile);
         }
-
         $this->notice = $stream->getNotices(($this->page-1)*NOTICES_PER_PAGE,
                                             NOTICES_PER_PAGE + 1);
-
         if (!$this->notice) {
             // TRANS: Server error displayed when a public timeline cannot be retrieved.
             $this->serverError(_('Could not retrieve public timeline.'));
         }
-
         if($this->page > 1 && $this->notice->N == 0){
             // TRANS: Server error when page not found (404).
             $this->serverError(_('No such page.'),$code=404);
         }
-
         return true;
     }
 
@@ -124,7 +115,6 @@ class PublicAction extends Action
     function handle($args)
     {
         parent::handle($args);
-
         $this->showPage();
     }
 
@@ -150,15 +140,11 @@ class PublicAction extends Action
         parent::extraHead();
         $this->element('meta', array('http-equiv' => 'X-XRDS-Location',
                                            'content' => common_local_url('publicxrds')));
-
         $rsd = common_local_url('rsd');
-
         // RSD, http://tales.phrasewise.com/rfc/rsd
-
         $this->element('link', array('rel' => 'EditURI',
                                      'type' => 'application/rsd+xml',
                                      'href' => $rsd));
-
         if ($this->page != 1) {
             $this->element('link', array('rel' => 'canonical',
                                          'href' => common_local_url('public')));
@@ -207,7 +193,6 @@ class PublicAction extends Action
                 $message .= _('Why not [register an account](%%action.register%%) and be the first to post!');
             }
         }
-
         $this->elementStart('div', 'guide');
         $this->raw(common_markup_to_html($message));
         $this->elementEnd('div');
@@ -224,19 +209,15 @@ class PublicAction extends Action
     function showContent()
     {
         $user = common_current_user();
-
         if (!empty($user) && $user->streamModeOnly()) {
             $nl = new NoticeList($this->notice, $this);
         } else {
             $nl = new ThreadedNoticeList($this->notice, $this, $this->userProfile);
         }
-
         $cnt = $nl->show();
-
         if ($cnt == 0) {
             $this->showEmptyList();
         }
-
         $this->pagination($this->page > 1, $cnt > NOTICES_PER_PAGE,
                           $this->page, 'public');
     }
@@ -270,13 +251,8 @@ class PublicAction extends Action
         $feat = new FeaturedUsersSection($this);
         $feat->show();
     }
-   // function showHeader{
-   // }
     function showFooter(){
     }
-    //function showBody(){
-
-    //}
     function showPrimaryNav(){
     parent::showPrimaryNav();
     }
@@ -304,7 +280,8 @@ class PublicAction extends Action
    // $this->element('img', array('id' =>'mapView','src' => $filename,'width'=>
    // '100%','style'=>'position:absolute;z-index:0;','onclick'=>'if(typeof( window.isShow) ==\'undefined\'||window.isShow){ $(\'#youtubeFrame\').show();window.isShow=false;}else{$(\'#youtubeFrame\').hide();window.isShow=true;}'));
     $this->element('iframe', array('id' =>'circle',
-                                        'src' => 'http://artsmesh.io/circle/circle.html',
+//                                        'src' => 'http://artsmesh.io/circle/bundle.html',
+        'src' => 'http://localhost/d3/circle/bundle.html',
                                         'width'=>'1200',
                                         'height'=>'768',
                                         'allowfullscreen'=>'',
