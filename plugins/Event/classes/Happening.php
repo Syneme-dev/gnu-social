@@ -121,7 +121,7 @@ class Happening extends Managed_DataObject
         $ev->title       = $title;
         $ev->location    = $location;
         $ev->description = $description;
-        $ev->url         = strtolower($url);
+        $ev->url         = $url;
 
         if (array_key_exists('created', $options)) {
             $ev->created = $options['created'];
