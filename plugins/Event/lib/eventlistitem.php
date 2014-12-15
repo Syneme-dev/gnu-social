@@ -48,7 +48,7 @@ class EventListItem extends NoticeListItemAdapter
 {
     function showNotice()
     {
-        $this->nli->out->elementStart('div', 'entry-title');
+        $this->nli->out->elementStart('div', 'entry-title eventItem');
         $this->nli->showAuthor();
         $this->showContent();
         $this->nli->out->elementEnd('div');
