@@ -51,6 +51,9 @@
 
     #header {
         padding-top: 12px;
+        margin-top: 20px;
+        margin-left: 100px;
+        margin-right: 100px;
     }
 
     #core {
@@ -1927,44 +1930,48 @@ select {
     padding-left: 10px;
 }
 
-/*xujian*/
 
 
+/*CSS for mac application app*/
 
 /*#header{*/
-    /*display:none;*/
+    /*    display:none;*/
+    /*padding-top:0;*/
+    /*margin-top:0;*/
+
+    /*margin-left:0;*/
+    /*margin-right:0;*/
 /*}*/
 /*#footer{*/
     /*display:none;*/
 /*}*/
 /*#content{*/
-    /*display:none;*/
     /*width:660px !important;*/
+    /*padding: 2px 80px 2px 2px !important;*/
+/*}*/
+
+/*#aside_primary_wrapper,#core,#wrap{*/
+    /*width:100% !important;*/
 /*}*/
 
 /*#aside_primary{*/
-
-    /*width:660px !important;*/
-/*}*/
-/*#aside_primary_wrapper,#core,#wrap{*/
-    /*width:700px !important;*/
+    /*width:300px !important;*/
 /*}*/
 /*#content h1{*/
     /*display:none;*/
 /*}*/
-
 /*#site_nav_local_views{*/
     /*position:relative !important;*/
     /*float: left !important;*/
-    /*width: 1000px !important;*/
+    /*width: 600px !important;*/
     /*height: 40px  !important;*/
-    /*padding:4px !important;*/
+    /*padding:0px !important;*/
 
 /*}*/
 
 /*#site_nav_local_views li*/
 /*{*/
-    /*margin-right: 20px !important;*/
+    /*margin-right: 10px !important;*/
     /*float: left  !important;*/
 /*}*/
 /*#site_nav_local_views .nav li*/
@@ -1975,7 +1982,20 @@ select {
 /*#site_nav_local_views .nav{*/
     /*width:100%  !important;*/
 /*}*/
-/*#header-search{*/
-        /*margin-top:4px !important;*/
-        /*float:none !important;*/
+
+/*#site_contact{*/
+    /*    visibility:hidden;*/
+    /*display:none;*/
+/*}*/
+/*#core {*/
+    /*padding-right: 0px !important;*/
+    /*padding-left: 0px !important;*/
+/*}*/
+
+
+/*#site_nav_global_primary{*/
+    /*background: transparent !important;*/
+    /*top:10px;*/
+    /*z-index: 1;*/
+    /*width: 1050px;*/
 /*}*/

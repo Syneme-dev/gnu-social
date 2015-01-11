@@ -81,7 +81,8 @@ option {
 
 #wrap {
     position: relative;
-    width: 960px;
+    /*width: 960px;*/
+    width:100%;
     margin: 0px auto;
     background-color: #fff;
     border-left: 10px solid #fff;
@@ -91,7 +92,8 @@ option {
 
 #header {
     position: relative;
-    width: 960px;
+    /*width: 960px;*/
+    width:100%;
     padding: 0px
 }
 
@@ -100,7 +102,10 @@ option {
     float: left;
     clear: both;
     margin: 0px;
-    width: 958px;
+    padding-right: 100px;
+    padding-left: 100px;
+    /*width: 958px;*/
+    width:100%;
     border-top: 5px solid #ccc;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
@@ -118,7 +123,7 @@ option {
     width: 100%;  
     float: left;
     position: relative;  
-    right: 239px; 
+    /*right: 239px; */
     background-color: #fff;  
     border-right: 1px solid #ccc;
 }  
@@ -127,7 +132,7 @@ option {
     width: 100%;  
     float: left;
     position: relative;  
-    right: 561px;
+    /*right: 561px;*/
     background-color: #f2f2f2;  
     border-right: 1px solid #ccc;
 } 
@@ -137,7 +142,7 @@ option {
     float: left;
     overflow: hidden;
     position: relative;
-    left: 800px;
+    /*left: 800px;*/
     margin: 0px 0px 20px 0px;
     padding: 22px 10px 40px 10px;
 }
@@ -147,7 +152,7 @@ option {
     float: left;
     overflow: hidden;
     position: relative;
-    left: 801px;
+    /*left: 801px;*/
     margin: 0px;
     padding: 20px 20px 40px 20px;
     background-color: #fff;
@@ -158,7 +163,7 @@ option {
     float: left;
     overflow: hidden;
     position: relative;
-    left: 802px;
+    /*left: 802px;*/
     padding: 22px 10px 40px 10px;
     margin: 0px 0px 20px 0px;
 }
@@ -166,7 +171,8 @@ option {
 #footer {
     clear: both;
     position: relative;
-    width: 940px;
+    /*width: 940px;*/
+    width:100%;
     background-color: #ccc;
     padding: 10px;
 }
@@ -202,8 +208,8 @@ address .poweredby {
     display: block;
     position: absolute;
     top: 0;
-    right: 0;
-    width: 800px;
+    /*right: 0;*/
+    width: 960px;
     margin: 0px;
     height: 24px;
     line-height: 20px;
