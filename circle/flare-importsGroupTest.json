@@ -1,0 +1,17 @@
+[
+    {"name":"group1.ken","size":8833,"imports":["group1.arthur"]},
+    {"name":"group1.arthur","size":1732,"imports":["group1.ken"]},
+    {"name":"group1.ww","size":10066,"imports":["group1.ken"]},
+
+    {"name":"group3.ken","size":8833,"imports":["group1.arthur"]},
+    {"name":"group3.arthur","size":1732,"imports":["group1.ken"]},
+    {"name":"group3.ww","size":10066,"imports":["group1.ken"]},
+
+    {"name":"group4.ken","size":8833,"imports":["group1.arthur"]},
+    {"name":"group4.arthur","size":1732,"imports":["group1.ken"]},
+    {"name":"group4.ww","size":10066,"imports":["group1.ken"]},
+
+    {"name":"group2.hailei","size":8833,"imports":["group1.arthur"]},
+    {"name":"group2.chiao","size":1732,"imports":["group1.ken","group2.hailei"]},
+    {"name":"group2.xujian","size":10066,"imports":["group1.ken","group2.hailei","group2.chiao"]}
+]

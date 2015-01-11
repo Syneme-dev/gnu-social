@@ -1,0 +1,754 @@
+{
+    "name": "",
+    "children": [
+        {
+            "name": "CCOM(Group)",
+            "children": [
+                {
+                    "name": "Ken(User)",
+                    "children": [
+                        {"name": "Post message(Blog)", "size": 100  },
+                        {"name": "Post message", "size": 200  },
+                        {"name": "Post message", "size": 300  }
+                        ]
+                },
+                {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                },
+                {
+                    "name": "xujian",
+                    "size": 500
+                }
+
+            ]
+        },
+        {
+            "name": "Syneme Asia",
+            "children": [
+                {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                },
+
+                {
+                    "name": "User three",
+                    "size": 400
+                }
+            ]
+        },
+        {
+            "name": "Syneme Asia",
+            "children": [
+                {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                },
+
+                {
+                    "name": "User three",
+                    "size": 400
+                }
+            ]
+        },
+        {
+            "name": "Syneme Asia",
+            "children": [
+                {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                },
+
+                {
+                    "name": "User three",
+                    "size": 400
+                }
+            ]
+        },
+        {
+            "name": "Syneme Asia",
+            "children": [
+                {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                },
+
+                {
+                    "name": "User three",
+                    "size": 400
+                }
+            ]
+        },
+        {
+            "name": "Syneme Asia",
+            "children": [
+                {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                },
+
+                {
+                    "name": "User three",
+                    "size": 400
+                }
+            ]
+        },
+        {
+            "name": "Syneme Asia",
+            "children": [
+                {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                }, {
+                    "name": "User one",
+                    "size": 30
+                },
+                {
+                    "name": "User two",
+                    "size": 1000
+                },
+
+                {
+                    "name": "User three",
+                    "size": 400
+                }
+            ]
+        },
+        {
+            "name": "Syneme Asia1",
+            "children": [
+                {
+                    "name": "Syneme Asia",
+                    "children": [
+                        {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        },
+
+                        {
+                            "name": "User three",
+                            "size": 400
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Syneme Asia1",
+            "children": [
+                {
+                    "name": "Syneme Asia",
+                    "children": [
+                        {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        },
+
+                        {
+                            "name": "User three",
+                            "size": 400
+                        }
+                    ]
+                },
+                {
+                    "name": "Syneme Asia",
+                    "children": [
+                        {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        },
+
+                        {
+                            "name": "User three",
+                            "size": 400
+                        }
+                    ]
+                },
+                {
+                    "name": "Syneme Asia",
+                    "children": [
+                        {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        }, {
+                            "name": "User one",
+                            "size": 30
+                        },
+                        {
+                            "name": "User two",
+                            "size": 1000
+                        },
+
+                        {
+                            "name": "User three",
+                            "size": 400
+                        }
+                    ]
+                }
+
+            ]
+        }
+    ]
+}

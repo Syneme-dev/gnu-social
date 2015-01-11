@@ -1,0 +1,6 @@
+[
+    {"name":"amdevio.admin","imports":[],"size":3300},
+    {"name":"amdevio.xujian2","imports":["amdevio.xujian"],"size":3300},
+    {"name":"amdevio.xujian","imports":["amdevio.admin"],"size":3300},
+    {"name":"amdevio.xujian","imports":[],"size":3300}
+]
