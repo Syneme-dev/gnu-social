@@ -1934,68 +1934,76 @@ select {
 
 /*CSS for mac application app*/
 
-/*#header{*/
-    /*    display:none;*/
-    /*padding-top:0;*/
-    /*margin-top:0;*/
+#header{
+    padding-top:0 !important;
+    margin-top:0 !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+}
+#footer{
+    display:none;
+}
+#content{
+    width:600px !important;
+    padding: 2px 80px 2px 2px !important;
+}
 
-    /*margin-left:0;*/
-    /*margin-right:0;*/
-/*}*/
-/*#footer{*/
-    /*display:none;*/
-/*}*/
-/*#content{*/
-    /*width:660px !important;*/
-    /*padding: 2px 80px 2px 2px !important;*/
-/*}*/
+#aside_primary_wrapper,#core,#wrap{
+    width:100% !important;
+}
 
-/*#aside_primary_wrapper,#core,#wrap{*/
-    /*width:100% !important;*/
-/*}*/
+#aside_primary{
+    width:360px !important;
+    float: right;
+    margin-right: 200px;
+}
+#content h1{
+    display:none;
+}
+#site_nav_local_views{
+    position:relative !important;
+    float: left !important;
+    width: 100%;
+    height: 40px  !important;
+    padding:0px !important;
+    margin-left: 40px !important;
 
-/*#aside_primary{*/
-    /*width:300px !important;*/
-/*}*/
-/*#content h1{*/
-    /*display:none;*/
-/*}*/
-/*#site_nav_local_views{*/
-    /*position:relative !important;*/
-    /*float: left !important;*/
-    /*width: 600px !important;*/
-    /*height: 40px  !important;*/
-    /*padding:0px !important;*/
+}
 
-/*}*/
+#site_nav_local_views li
+{
+    margin-right: 10px !important;
+    float: left  !important;
+}
+#site_nav_local_views .nav li
+{
+    margin-right: 1px !important;
 
-/*#site_nav_local_views li*/
-/*{*/
-    /*margin-right: 10px !important;*/
-    /*float: left  !important;*/
-/*}*/
-/*#site_nav_local_views .nav li*/
-/*{*/
-    /*margin-right: 1px !important;*/
+}
+#site_nav_local_views .nav{
+    width:100%  !important;
+}
 
-/*}*/
-/*#site_nav_local_views .nav{*/
-    /*width:100%  !important;*/
-/*}*/
-
-/*#site_contact{*/
-    /*    visibility:hidden;*/
-    /*display:none;*/
-/*}*/
-/*#core {*/
-    /*padding-right: 0px !important;*/
-    /*padding-left: 0px !important;*/
-/*}*/
+#site_contact{
+    position: absolute !important;
+    margin: 0 0 0 100px;
+}
+#site_contact .fn.org{
+    display:none !important;
+}
+#core {
+}
 
 
-/*#site_nav_global_primary{*/
-    /*background: transparent !important;*/
-    /*top:10px;*/
-    /*z-index: 1;*/
-    /*width: 1050px;*/
-/*}*/
+#site_nav_global_primary{
+    background: transparent !important;
+    top:10px !important;
+    z-index: 3 !important;
+    width: 500px !important;
+    right: 100px ;
+
+}
+
+#nav_doc_google{
+    display: none !important;
+}
