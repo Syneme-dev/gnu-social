@@ -142,14 +142,15 @@ d3.json("http://artsmesh.io/api/statusnet/groups/list_details.json", function (c
             .text(function (d) {
                 return d.key;
             })
-            .on("click", function (d) {
+	    .on("click", function (d) {
                 if (d.children) {
-                    parent.window.location.href='app:nodeClick:group:'+ d.key;
+//                    parent.window.location.href='app:nodeClick:group:'+ d.key;
+                    window.location.href="http://artsmesh.io/group/"+ d.key;
                 }
                 else{
-                parent.window.location.href='app:nodeClick:'+ d.key;
+                    window.location.href="http://artsmesh.io/"+ d.key;
+//                parent.window.location.href='app:nodeClick:'+ d.key;
                 }
-//                parent.window.objcConnector.elementClicked_(false);
             })
             .on("mouseover", mouseover)
             .on("mouseout", mouseout);
