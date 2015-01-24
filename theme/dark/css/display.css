@@ -2016,6 +2016,133 @@ select {
 
 .fn.org { float:left; }
 
+
+
+
+/***************************************************
+        BRAD ADDITIONAL OVERALL CSS UPDATES
+***************************************************/
+
+#header {
+	width: 100%;
+	margin: 0px auto;
+	overflow: auto;
+	max-width: 1280px;
+	padding-bottom: 20px;
+}
+
+#header address {
+	margin: 0px;
+	padding: 0 20px;	
+}
+
+#header #site_nav_global_primary {
+	top: 0px;
+	position: relative;
+	float: right;
+	width: auto;
+	height: auto;
+	padding-right: 20px;
+}
+
+#site_nav_local_views li {
+        display: inline;
+}
+
+#site_nav_local_views #nav_local_default > li:last-child {
+	display: none!important;
+}
+
+#site_nav_local_views {
+	width: 100%;
+	padding: 0px!important;
+}
+
+#nav_local_default {
+	position: relative;
+	overflow: auto;
+	padding: 0 20px;
+}
+
+#site_nav_local_views .nav {
+	position: relative;
+	width: auto;
+	float: none;
+	margin-right: 3px;
+	display: inline;
+}
+
+#site_nav_local_views .nav li {
+	width: auto;
+	display: inline-block;
+}
+
+
+
+
+body {
+	overflow-x: hidden;
+}
+
+#core {
+        padding: 0px;
+        width: 100%!important;
+}
+
+#aside_primary_wrapper {
+        float: none;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1280px;
+}
+
+#content,
+#aside_primary {
+	width: 100%!important;
+	padding: 0px;
+	float: none;
+	position: relative;
+	display: block;
+}
+
+#content > *,
+#aside_primary > * {
+	padding: 0 20px;
+}
+
+#aside_primary .section {
+	width: auto;
+	display: block;
+	float: none;
+}
+
+
+
+@media (min-width: 640px) {
+	#content {
+		width: 60%!important;
+		float: left;
+	}
+	
+	#content h1 {
+		padding: 0px;
+		margin: 0 20px;
+	}
+	#aside_primary {
+		width: 40%!important;
+		float: right;
+	}
+}
+
+
+/***************************************************
+      END BRAD ADDITIONAL OVERALL CSS UPDATES
+***************************************************/
+
+
+
+/****************** archive map homepage css ****************/
+
 html { 
 	display: block; position: relative; width: 100%; min-height: 100%; }
 #public, #public #wrap,
@@ -2046,6 +2173,7 @@ html {
 	float: right;
 	width: auto;
 	height: auto;
+	top: 0px;
 }
 #public #core {
 	padding: 0;
@@ -2063,10 +2191,8 @@ html {
 ********************************************/
 
 @media (min-width: 1px) and (max-width: 479px) {
-	#public #wrap #header {
-		height: 100px;
-	}	
 	#public #core {
 		height: calc(100% - 132px);
 	}
 }
+
