@@ -207,17 +207,36 @@ if ($client->getAccessToken() && isset($broadcast_title) && isset($broadcast_sta
   $authUrl = $client->createAuthUrl();
   $htmlBody = <<<END
   <h3>Authorization Required</h3>
-  <p>You need to <a href="$authUrl">authorize access</a> before proceeding.<p>
+  <p>You need to authorize access before proceeding.<p>
+  <div><a href="$authUrl" class="submit">Authorize</a></div>
 END;
 }
 ?>
-
 <!doctype html>
-<html>
+
+<html lang="en">
 <head>
-<title>Bound Live Broadcast</title>
+  <meta charset="utf-8">
+
+  <title>Create a Live YouTube Broadcast</title>
+  <meta name="description" content="ArtsMesh YouTube Events Manager">
+  <meta name="author" content="ArtsMesh">
+
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+  <link rel="stylesheet" href="/app/event/css/styles.css">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
+
 <body>
   <?=$htmlBody?>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script src="/app/event/js/moment-with-locales.js"></script>
+  <script src="/app/event/js/jstz-1.0.4.min.js"></script>
+  <script src="/app/event/js/webshim-1.15.6/js-webshim/minified/polyfiller.js"></script>
+  <script src="/app/event/js/scripts.js"></script>
 </body>
 </html>

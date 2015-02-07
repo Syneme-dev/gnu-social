@@ -32,7 +32,7 @@
 			
 			<div id="content">
 				<div id="content_inner">
-				<h1>Sucess!</h1>
+				<!-- <h1>Sucess!</h1> -->
 				<?php if ( !is_null($video_id) ): ?>
 					<?php $youtube_id = $_GET['id']; ?>
 					<iframe class="event-title entry-title summary" frameborder="0" allowfullscreen="" border="0" src="https://www.youtube.com/embed/<?php echo $youtube_id; ?>"></iframe>

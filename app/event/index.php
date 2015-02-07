@@ -155,6 +155,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
   <script src="/app/event/js/moment-with-locales.js"></script>
   <script src="/app/event/js/jstz-1.0.4.min.js"></script>
+  <script src="/app/event/js/webshim-1.15.6/js-webshim/minified/polyfiller.js"></script>
   <script src="/app/event/js/scripts.js"></script>
 </body>
 </html>

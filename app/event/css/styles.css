@@ -31,6 +31,7 @@ body {
   position: relative;
   background-color: #333;
   font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #b7b7b7;
 }
 
 a:link, a:visited {
@@ -279,7 +280,8 @@ select {
 }
 
 .submit,
-.link-btn {
+.link-btn,
+a.submit {
 	background-color: #3c4b5e;
     border: 1px solid #b7b7b7;
     color: #fff;
@@ -289,6 +291,14 @@ select {
     padding: 0 10px;
     text-transform: uppercase;	
     width: auto;
+}
+
+a.submit {
+    display: block;
+    line-height: 1.9em;
+    position: relative;
+    clear: both;
+    float: left;
 }
 
 .submit:hover,
