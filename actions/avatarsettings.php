@@ -29,7 +29,7 @@
  */
 
 if (!defined('STATUSNET') && !defined('LACONICA')) {
-    exit(1);
+    //exit(1);
 }
 
 
@@ -114,74 +114,91 @@ class AvatarsettingsAction extends SettingsAction
                                           'class' => 'form_settings',
                                           'action' =>
                                           common_local_url('avatarsettings')));
-        $this->elementStart('fieldset');
-        // TRANS: Avatar upload page form legend.
-        $this->element('legend', null, _('Avatar settings'));
-        $this->hidden('token', common_session_token());
+        
+	$this->elementStart('fieldset');
 
-        if (Event::handle('StartAvatarFormData', array($this))) {
-            $this->elementStart('ul', 'form_data');
-            try {
-                $original = Avatar::getUploaded($profile);
+	$this->element('legend', null, _('Avatar settings'));
+	$this->hidden('token', common_session_token());
+	
+	if (Event::handle('StartAvatarFormData', array($this))) {
+		$this->elementStart('ul', 'form_data');
+	
 
-                $this->elementStart('li', array('id' => 'avatar_original',
+		try {
+                	$original = Avatar::getUploaded($profile);
+
+                	$this->elementStart('li', array('id' => 'avatar_original',
                                                 'class' => 'avatar_view'));
-                // TRANS: Header on avatar upload page for thumbnail of originally uploaded avatar (h2).
-                $this->element('h2', null, _("Original"));
-                $this->elementStart('div', array('id'=>'avatar_original_view'));
-                $this->element('img', array('src' => $original->displayUrl(),
+                	// TRANS: Header on avatar upload page for thumbnail of originally uploaded avatar (h2).
+                	$this->element('h2', null, _("Original"));
+                	$this->elementStart('div', array('id'=>'avatar_original_view'));
+                	$this->element('img', array('src' => $original->displayUrl(),
                                             'width' => $original->width,
                                             'height' => $original->height,
                                             'alt' => $user->nickname));
-                $this->elementEnd('div');
-                $this->elementEnd('li');
-            } catch (NoAvatarException $e) {
-                // No original avatar found!
-            }
+                	$this->elementEnd('div');
+                	$this->elementEnd('li');
+            	} catch (NoAvatarException $e) {
+                	// No original avatar found!
+            	}
+		
 
-            try {
-                $avatar = $profile->getAvatar(AVATAR_PROFILE_SIZE);
-                $this->elementStart('li', array('id' => 'avatar_preview',
+		try {
+			$avatar = $profile->getAvatar(AVATAR_PROFILE_SIZE);
+			
+			$this->elementStart('li', array('id' => 'avatar_preview',
                                                 'class' => 'avatar_view'));
-                // TRANS: Header on avatar upload page for thumbnail of to be used rendition of uploaded avatar (h2).
-                $this->element('h2', null, _("Preview"));
-                $this->elementStart('div', array('id'=>'avatar_preview_view'));
-                $this->element('img', array('src' => $avatar->displayUrl(),
+			
+			if (!empty($avatar->filename)) {
+        			// TRANS: Header on avatar upload page for thumbnail of to be used rendition of uploaded avatar (h2).
+                        	$this->element('h2', null, _("Preview"));
+                        	$this->elementStart('div', array('id'=>'avatar_preview_view'));       			
+	
+				$this->element('img', array('src' => $avatar->displayUrl(),
                                             'width' => AVATAR_PROFILE_SIZE,
                                             'height' => AVATAR_PROFILE_SIZE,
                                             'alt' => $user->nickname));
-                $this->elementEnd('div');
-                if (!empty($avatar->filename)) {
-                    // TRANS: Button on avatar upload page to delete current avatar.
-                    $this->submit('delete', _m('BUTTON','Delete'));
-                }
-                $this->elementEnd('li');
-            } catch (NoAvatarException $e) {
-                // No previously uploaded avatar to preview.
-            }
+                        	$this->elementEnd('div');
+		
+		     		// TRANS: Button on avatar upload page to delete current avatar.
+                    		$this->submit('delete', _m('BUTTON','Delete'));
+                	}
+                		$this->elementEnd('li');
+		
+		} catch (NoAvatarException $e) {
+                	// No previously uploaded avatar to preview.
+            	}
 
-            $this->elementStart('li', array ('id' => 'settings_attach'));
-            $this->element('input', array('name' => 'MAX_FILE_SIZE',
+
+
+
+			$this->elementStart('li', array ('id' => 'settings_attach'));
+            			$this->element('input', array('name' => 'MAX_FILE_SIZE',
                                           'type' => 'hidden',
                                           'id' => 'MAX_FILE_SIZE',
                                           'value' => ImageFile::maxFileSizeInt()));
-            $this->element('input', array('name' => 'avatarfile',
+            			$this->element('input', array('name' => 'avatarfile',
                                           'type' => 'file',
                                           'id' => 'avatarfile'));
-            $this->elementEnd('li');
-            $this->elementEnd('ul');
+            		$this->elementEnd('li');
 
-            $this->elementStart('ul', 'form_actions');
-            $this->elementStart('li');
-                // TRANS: Button on avatar upload page to upload an avatar.
-            $this->submit('upload', _m('BUTTON','Upload'));
-            $this->elementEnd('li');
-            $this->elementEnd('ul');
-        }
-        Event::handle('EndAvatarFormData', array($this));
+		$this->elementEnd('ul');
 
-        $this->elementEnd('fieldset');
-        $this->elementEnd('form');
+            	$this->elementStart('ul', 'form_actions');
+			$this->elementStart('li');
+                
+			// TRANS: Button on avatar upload page to upload an avatar.
+            		$this->submit('upload', _m('BUTTON','Upload'));
+            		$this->elementEnd('li');
+	
+		
+		$this->elementEnd('ul');
+	}
+
+
+	$this->elementEnd('fieldset');
+	
+	$this->elementEnd('form'); // Upload FORM End
     }
 
     function showCropForm()
