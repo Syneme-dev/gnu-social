@@ -84,9 +84,10 @@ class NewmessageAction extends FormAction
         $this->to = $this->trimmed('to');
 
         if ($this->to) {
-
-            $this->other = User::getKV('id', $this->to);
-
+            //Note:xujian change to code from User::getKV to Profile::getKV.
+            $this->other = Profile::getKV('id', $this->to);
+//            $this->other = User::getKV('id', $this->to);
+//            $this->other = User::staticGet('id', $this->to);
             if (!$this->other) {
                 // TRANS: Client error displayed trying to send a direct message to a non-existing user.
                 $this->clientError(_('No such user.'), 404);
