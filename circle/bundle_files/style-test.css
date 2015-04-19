@@ -118,11 +118,11 @@ path.arc {
 }
 .bigNode {
     font-size: 16px;
-    fill:#1f77b4;
+    fill: #666;
+    /*fill:#1f77b4;*/
     /*-webkit-transform-origin:center center;*/
     /*-webkit-transform:rotate(90deg) translate(0px,0px) scale(3);*/
 }
-
 .node:hover {
     fill: #1f77b4;
 }

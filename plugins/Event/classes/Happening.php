@@ -210,7 +210,7 @@ class Happening extends Managed_DataObject
             {
                $notice = new Happening();
                            $notice->whereAdd("url like '%www.youtube.com/embed%'");
-                       //$notice->orderBy('created DESC');
+                       	   $notice->orderBy('start_time DESC');
 
                        if ($notice->find()) {
                            while ($notice->fetch()) {
