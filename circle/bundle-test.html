@@ -106,7 +106,9 @@ d3.json("http://artsmesh.io/api/statusnet/groups/list_details.json", function (c
                 return true;
             }))
             .enter().append("svg:g")
-
+            .filter(function(d){
+                return typeof (d.key)!='undefined';
+            })
             .attr("id", function (d) {
                 return "node-" + d.key;
             })
