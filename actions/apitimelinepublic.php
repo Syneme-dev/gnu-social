@@ -191,11 +191,11 @@ class ApiTimelinePublicAction extends ApiPrivateAuthAction
         $title      = sprintf(_("%s public timeline"), $sitename);
         $taguribase = TagURI::base();
         $id         = "tag:$taguribase:PublicTimeline";
-        $link       = common_local_url('public');
+        $link       = common_local_url('public',null,null,null,true,true);
         $self       = $this->getSelfUri();
         // TRANS: Subtitle for site timeline. %s is the StatusNet sitename.
         $subtitle   = sprintf(_("%s updates from everyone!"), $sitename);
-
+        $absLogoPath=   common_path($sitelogo,false,true,true);
         switch($this->format) {
         case 'xml':
             $this->showXmlTimeline($this->notices);
@@ -207,7 +207,7 @@ class ApiTimelinePublicAction extends ApiPrivateAuthAction
                 $link,
                 $subtitle,
                 null,
-                $sitelogo,
+                $absLogoPath,
                 $self
             );
             break;

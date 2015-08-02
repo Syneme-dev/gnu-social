@@ -560,9 +560,11 @@ function twitterUserArray($profile, $get_notice=false)
 
             // We trim() to avoid extraneous whitespace in the output
 
-            $entry['content'] = common_xml_safe_str(trim($notice->rendered));
+            $descText=trim($notice->rendered);
+            $d=str_replace("href=\"/","href=\"http://artmesh.io/",$descText);
+            $entry['content'] = common_xml_safe_str($d);
             $entry['title'] = $profile->nickname . ': ' . common_xml_safe_str(trim($notice->content));
-            $entry['link'] = common_local_url('shownotice', array('notice' => $notice->id));
+            $entry['link'] = common_local_url('shownotice', array('notice' => $notice->id),null,null,true,true);
             $entry['published'] = common_date_iso8601($notice->created);
 
             $taguribase = TagURI::base();
@@ -1671,7 +1673,7 @@ function twitterUserArray($profile, $get_notice=false)
             $pstring = http_build_query($params);
         }
 
-        $uri = common_local_url($action, $aargs);
+        $uri = common_local_url($action, $aargs,null,null,true,true);
 
         if (!empty($pstring)) {
             $uri .= '?' . $pstring;

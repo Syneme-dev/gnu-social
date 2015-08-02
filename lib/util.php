@@ -1227,7 +1227,7 @@ function common_relative_profile($sender, $nickname, $dt=null)
     return null;
 }
 
-function common_local_url($action, $args=null, $params=null, $fragment=null, $addSession=true)
+function common_local_url($action, $args=null, $params=null, $fragment=null, $addSession=true,$isAbsolute=false)
 {
     if (Event::handle('StartLocalURL', array(&$action, &$params, &$fragment, &$addSession, &$url))) {
         $r = Router::get();
@@ -1237,16 +1237,17 @@ function common_local_url($action, $args=null, $params=null, $fragment=null, $ad
                 || common_is_sensitive($action);
 
         if (common_config('site','fancy')) {
-            $url = common_path($path, $ssl, $addSession);
+            $url = common_path($path, $ssl, $addSession,$isAbsolute);
         } else {
             if (mb_strpos($path, '/index.php') === 0) {
-                $url = common_path($path, $ssl, $addSession);
+                $url = common_path($path, $ssl, $addSession,$isAbsolute);
             } else {
-                $url = common_path('index.php/'.$path, $ssl, $addSession);
+                $url = common_path('index.php/'.$path, $ssl, $addSession,$isAbsolute);
             }
         }
         Event::handle('EndLocalURL', array(&$action, &$params, &$fragment, &$addSession, &$url));
     }
+
     return $url;
 }
 
@@ -1272,7 +1273,7 @@ function common_is_sensitive($action)
     return $ssl;
 }
 
-function common_path($relative, $ssl=false, $addSession=true)
+function common_path($relative, $ssl=false, $addSession=true,$isAbsolute=false)
 {
     $pathpart = (common_config('site', 'path')) ? common_config('site', 'path')."/" : '';
 
@@ -1295,15 +1296,20 @@ function common_path($relative, $ssl=false, $addSession=true)
             common_log(LOG_ERR, 'Site server not configured, unable to determine site name.');
         }
     }
-    $serverpart= $_SERVER['HTTP_HOST'];
+
     if ($addSession) {
         $relative = common_inject_session($relative, $serverpart);
     }
     //domain name should be enable to change by request from different domain.
 
     //using related url.
-    $url= "/".$pathpart.$relative;
-    //$url= $proto.'://'.$serverpart.'/'.$pathpart.$relative;
+    $serverpart= $_SERVER['HTTP_HOST'];
+    if($isAbsolute){
+        $url= $proto.'://'.$serverpart.'/'.$pathpart.$relative;
+    }
+    else{
+        $url= "/".$pathpart.$relative;
+    }
     return $url;
 }
 
