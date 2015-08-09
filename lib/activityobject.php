@@ -429,7 +429,7 @@ class ActivityObject
         }
     }
 
-    static function fromNotice(Notice $notice)
+    static function fromNotice(Notice $notice,$atomXml =false)
     {
         $object = new ActivityObject();
 
@@ -446,9 +446,9 @@ class ActivityObject
             }
             $object->content = $notice->rendered;
             $object->link    = $notice->bestUrl();
-
+            if(!$atomXml){
             $object->extra[] = array('status_net', array('notice_id' => $notice->id));
-
+            }
             Event::handle('EndActivityObjectFromNotice', array($notice, &$object));
         }
 
@@ -727,7 +727,7 @@ class ActivityObject
 
             if ($this->type == ActivityObject::PERSON
                 || $this->type == ActivityObject::GROUP) {
-
+                if($this->avatarLinks){
                 foreach ($this->avatarLinks as $alink) {
                     $xo->element('link',
                             array(
@@ -738,6 +738,7 @@ class ActivityObject
                                 'href'         => $alink->url,
                                 ),
                             null);
+                }
                 }
             }
 
@@ -755,9 +756,11 @@ class ActivityObject
 
             // @fixme there's no way here to make a tree; elements can only contain plaintext
             // @fixme these may collide with JSON extensions
+            if($this->extra){
             foreach ($this->extra as $el) {
                 list($extraTag, $attrs, $content) = array_pad($el, 3, null);
                 $xo->element($extraTag, $attrs, $content);
+            }
             }
 
             Event::handle('EndActivityObjectOutputAtom', array($this, $xo));

@@ -212,17 +212,15 @@ class ApiTimelinePublicAction extends ApiPrivateAuthAction
             );
             break;
         case 'atom':
-
             header('Content-Type: application/atom+xml; charset=utf-8');
-
             $atom = new AtomNoticeFeed($this->auth_user);
 
             $atom->setId($id);
             $atom->setTitle($title);
             $atom->setSubtitle($subtitle);
-            $atom->setLogo($sitelogo);
+            $atom->setLogo($absLogoPath);
             $atom->setUpdated('now');
-            $atom->addLink(common_local_url('public'));
+            $atom->addLink($link);
             $atom->setSelfLink($self);
             $atom->addEntryFromNotices($this->notices);
 

@@ -34,7 +34,9 @@
  * @license  GNU Affero General Public License http://www.gnu.org/licenses/
  */
 
-if (!defined('GNUSOCIAL')) { exit(1); }
+if (!defined('GNUSOCIAL')) {
+    exit(1);
+}
 
 /**
  * Table Definition for notice
@@ -52,27 +54,27 @@ class Notice extends Managed_DataObject
     ###START_AUTOCODE
     /* the code below is auto generated do not remove the above tag */
 
-    public $__table = 'notice';                          // table name
-    public $id;                              // int(4)  primary_key not_null
-    public $profile_id;                      // int(4)  multiple_key not_null
-    public $uri;                             // varchar(255)  unique_key
-    public $content;                         // text
-    public $rendered;                        // text
-    public $url;                             // varchar(255)
-    public $created;                         // datetime  multiple_key not_null default_0000-00-00%2000%3A00%3A00
-    public $modified;                        // timestamp   not_null default_CURRENT_TIMESTAMP
-    public $reply_to;                        // int(4)
-    public $is_local;                        // int(4)
-    public $source;                          // varchar(32)
-    public $conversation;                    // int(4)
-    public $lat;                             // decimal(10,7)
-    public $lon;                             // decimal(10,7)
-    public $location_id;                     // int(4)
-    public $location_ns;                     // int(4)
-    public $repeat_of;                       // int(4)
-    public $verb;                            // varchar(255)
-    public $object_type;                     // varchar(255)
-    public $scope;                           // int(4)
+    public $__table = 'notice'; // table name
+    public $id; // int(4)  primary_key not_null
+    public $profile_id; // int(4)  multiple_key not_null
+    public $uri; // varchar(255)  unique_key
+    public $content; // text
+    public $rendered; // text
+    public $url; // varchar(255)
+    public $created; // datetime  multiple_key not_null default_0000-00-00%2000%3A00%3A00
+    public $modified; // timestamp   not_null default_CURRENT_TIMESTAMP
+    public $reply_to; // int(4)
+    public $is_local; // int(4)
+    public $source; // varchar(32)
+    public $conversation; // int(4)
+    public $lat; // decimal(10,7)
+    public $lon; // decimal(10,7)
+    public $location_id; // int(4)
+    public $location_ns; // int(4)
+    public $repeat_of; // int(4)
+    public $verb; // varchar(255)
+    public $object_type; // varchar(255)
+    public $scope; // int(4)
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
@@ -101,7 +103,7 @@ class Notice extends Managed_DataObject
                 'object_type' => array('type' => 'varchar', 'length' => 255, 'description' => 'URI representing activity streams object type', 'default' => 'http://activitystrea.ms/schema/1.0/note'),
                 'verb' => array('type' => 'varchar', 'length' => 255, 'description' => 'URI representing activity streams verb', 'default' => 'http://activitystrea.ms/schema/1.0/post'),
                 'scope' => array('type' => 'int',
-                                 'description' => 'bit map for distribution scope; 0 = everywhere; 1 = this server only; 2 = addressees; 4 = followers; null = default'),
+                    'description' => 'bit map for distribution scope; 0 = everywhere; 1 = this server only; 2 = addressees; 4 = followers; null = default'),
             ),
             'primary key' => array('id'),
             'unique keys' => array(
@@ -128,21 +130,21 @@ class Notice extends Managed_DataObject
 
         return $def;
     }
-	
-    /* Notice types */
-    const LOCAL_PUBLIC    =  1;
-    const REMOTE          =  0;
-    const LOCAL_NONPUBLIC = -1;
-    const GATEWAY         = -2;
 
-    const PUBLIC_SCOPE    = 0; // Useful fake constant
-    const SITE_SCOPE      = 1;
+    /* Notice types */
+    const LOCAL_PUBLIC = 1;
+    const REMOTE = 0;
+    const LOCAL_NONPUBLIC = -1;
+    const GATEWAY = -2;
+
+    const PUBLIC_SCOPE = 0; // Useful fake constant
+    const SITE_SCOPE = 1;
     const ADDRESSEE_SCOPE = 2;
-    const GROUP_SCOPE     = 4;
-    const FOLLOWER_SCOPE  = 8;
+    const GROUP_SCOPE = 4;
+    const FOLLOWER_SCOPE = 8;
 
     protected $_profile = -1;
-    
+
     public function getProfile()
     {
         if ($this->_profile === -1) {
@@ -150,8 +152,8 @@ class Notice extends Managed_DataObject
         }
         return $this->_profile;
     }
-    
-    public function _setProfile(Profile $profile=null)
+
+    public function _setProfile(Profile $profile = null)
     {
         if (!$profile instanceof Profile) {
             throw new NoProfileException($this->profile_id);
@@ -159,7 +161,7 @@ class Notice extends Managed_DataObject
         $this->_profile = $profile;
     }
 
-    function delete($useWhere=false)
+    function delete($useWhere = false)
     {
         // For auditing purposes, save a record that the notice
         // was deleted.
@@ -175,11 +177,11 @@ class Notice extends Managed_DataObject
         if (!$deleted instanceof Deleted_notice) {
             $deleted = new Deleted_notice();
 
-            $deleted->id         = $this->id;
+            $deleted->id = $this->id;
             $deleted->profile_id = $this->profile_id;
-            $deleted->uri        = $this->uri;
-            $deleted->created    = $this->created;
-            $deleted->deleted    = common_sql_now();
+            $deleted->uri = $this->uri;
+            $deleted->created = $this->created;
+            $deleted->deleted = common_sql_now();
 
             $deleted->insert();
         }
@@ -213,7 +215,7 @@ class Notice extends Managed_DataObject
     public function getUrl()
     {
         // The risk is we start having empty urls and non-http uris...
-        return $this->url ?: $this->uri;
+        return $this->url ? : $this->uri;
     }
 
     public static function getByUri($uri)
@@ -249,12 +251,12 @@ class Notice extends Managed_DataObject
     {
         //turn each into their canonical tag
         //this is needed to remove dupes before saving e.g. #hash.tag = #hashtag
-        for($i=0; $i<count($hashtags); $i++) {
+        for ($i = 0; $i < count($hashtags); $i++) {
             /* elide characters we don't want in the tag */
             $hashtags[$i] = common_canonical_tag($hashtags[$i]);
         }
 
-        foreach(array_unique($hashtags) as $hashtag) {
+        foreach (array_unique($hashtags) as $hashtag) {
             $this->saveTag($hashtag);
             self::blow('profile:notice_ids_tagged:%d:%s', $this->profile_id, $hashtag);
         }
@@ -276,7 +278,7 @@ class Notice extends Managed_DataObject
         if (!$id) {
             // TRANS: Server exception. %s are the error details.
             throw new ServerException(sprintf(_('Database error inserting hashtag: %s.'),
-                                              $last_error->message));
+                $last_error->message));
             return;
         }
 
@@ -329,15 +331,16 @@ class Notice extends Managed_DataObject
      * @return Notice
      * @throws ClientException
      */
-    static function saveNew($profile_id, $content, $source, array $options=null) {
+    static function saveNew($profile_id, $content, $source, array $options = null)
+    {
         $defaults = array('uri' => null,
-                          'url' => null,
-                          'reply_to' => null,
-                          'repeat_of' => null,
-                          'scope' => null,
-                          'distribute' => true,
-                          'object_type' => null,
-                          'verb' => null);
+            'url' => null,
+            'reply_to' => null,
+            'repeat_of' => null,
+            'scope' => null,
+            'distribute' => true,
+            'object_type' => null,
+            'verb' => null);
 
         if (!empty($options) && is_array($options)) {
             $options = array_merge($defaults, $options);
@@ -372,15 +375,15 @@ class Notice extends Managed_DataObject
         if (common_config('throttle', 'enabled') && !Notice::checkEditThrottle($profile_id)) {
             common_log(LOG_WARNING, 'Excessive posting by profile #' . $profile_id . '; throttled.');
             // TRANS: Client exception thrown when a user tries to post too many notices in a given time frame.
-            throw new ClientException(_('Too many notices too fast; take a breather '.
-                                        'and post again in a few minutes.'));
+            throw new ClientException(_('Too many notices too fast; take a breather ' .
+                'and post again in a few minutes.'));
         }
 
         if (common_config('site', 'dupelimit') > 0 && !Notice::checkDupes($profile_id, $final)) {
             common_log(LOG_WARNING, 'Dupe posting by profile #' . $profile_id . '; throttled.');
             // TRANS: Client exception thrown when a user tries to post too many duplicate notices in a given time frame.
-            throw new ClientException(_('Too many duplicate messages too quickly;'.
-                                        ' take a breather and post again in a few minutes.'));
+            throw new ClientException(_('Too many duplicate messages too quickly;' .
+                ' take a breather and post again in a few minutes.'));
         }
 
         if (!$profile->hasRight(Right::NEWNOTICE)) {
@@ -398,7 +401,8 @@ class Notice extends Managed_DataObject
         // Sandboxed are non-false, but not 1, either
 
         if (!$profile->hasRight(Right::PUBLICNOTICE) ||
-            ($source && $autosource && in_array($source, $autosource))) {
+            ($source && $autosource && in_array($source, $autosource))
+        ) {
             $notice->is_local = Notice::LOCAL_NONPUBLIC;
         } else {
             $notice->is_local = $is_local;
@@ -442,7 +446,8 @@ class Notice extends Managed_DataObject
             }
 
             if ($repeat->scope != Notice::SITE_SCOPE &&
-                $repeat->scope != Notice::PUBLIC_SCOPE) {
+                $repeat->scope != Notice::PUBLIC_SCOPE
+            ) {
                 // TRANS: Client error displayed when trying to repeat a non-public notice.
                 throw new ClientException(_('Cannot repeat a private notice.'), 403);
             }
@@ -468,10 +473,10 @@ class Notice extends Managed_DataObject
                     // TRANS: Client error displayed when trying to reply to a notice a the target has no access to.
                     // TRANS: %1$s is a user nickname, %2$d is a notice ID (number).
                     throw new ClientException(sprintf(_('%1$s has no access to notice %2$d.'),
-                                                      $profile->nickname, $reply->id), 403);
+                        $profile->nickname, $reply->id), 403);
                 }
 
-                $notice->reply_to     = $reply->id;
+                $notice->reply_to = $reply->id;
                 $notice->conversation = $reply->conversation;
 
                 // If the original is private to a group, and notice has no group specified,
@@ -509,10 +514,10 @@ class Notice extends Managed_DataObject
 
         if (empty($verb)) {
             if (!empty($notice->repeat_of)) {
-                $notice->verb        = ActivityVerb::SHARE;
+                $notice->verb = ActivityVerb::SHARE;
                 $notice->object_type = ActivityObject::ACTIVITY;
             } else {
-                $notice->verb        = ActivityVerb::POST;
+                $notice->verb = ActivityVerb::POST;
             }
         } else {
             $notice->verb = $verb;
@@ -541,7 +546,8 @@ class Notice extends Managed_DataObject
 
             if ($user->private_stream &&
                 ($notice->scope == Notice::PUBLIC_SCOPE ||
-                 $notice->scope == Notice::SITE_SCOPE)) {
+                    $notice->scope == Notice::SITE_SCOPE)
+            ) {
                 $notice->scope |= Notice::FOLLOWER_SCOPE;
             }
         } catch (NoSuchUserException $e) {
@@ -721,22 +727,23 @@ class Notice extends Managed_DataObject
         $keyPart = vsprintf($format, $args);
 
         $cacheKey = Cache::key($keyPart);
-        
+
         $c->delete($cacheKey);
 
         // delete the "last" stream, too, if this notice is
         // older than the top of that stream
 
-        $lastKey = $cacheKey.';last';
+        $lastKey = $cacheKey . ';last';
 
         $lastStr = $c->get($lastKey);
 
         if ($lastStr !== false) {
-            $window     = explode(',', $lastStr);
-            $lastID     = $window[0];
+            $window = explode(',', $lastStr);
+            $lastID = $window[0];
             $lastNotice = Notice::getKV('id', $lastID);
             if (!$lastNotice instanceof Notice // just weird
-                || strtotime($lastNotice->created) >= strtotime($this->created)) {
+                || strtotime($lastNotice->created) >= strtotime($this->created)
+            ) {
                 $c->delete($lastKey);
             }
         }
@@ -749,7 +756,8 @@ class Notice extends Managed_DataObject
      *
      * @return void
      */
-    function saveUrls() {
+    function saveUrls()
+    {
         if (common_config('attachments', 'process_links')) {
             common_replace_urls_callback($this->content, array($this, 'saveUrl'), $this->id);
         }
@@ -776,11 +784,13 @@ class Notice extends Managed_DataObject
     /**
      * @private callback
      */
-    function saveUrl($url, $notice_id) {
+    function saveUrl($url, $notice_id)
+    {
         File::processNew($url, $notice_id);
     }
 
-    static function checkDupes($profile_id, $content) {
+    static function checkDupes($profile_id, $content)
+    {
         $profile = Profile::getKV($profile_id);
         if (!$profile instanceof Profile) {
             return false;
@@ -808,7 +818,8 @@ class Notice extends Managed_DataObject
         return ($cnt == 0);
     }
 
-    static function checkEditThrottle($profile_id) {
+    static function checkEditThrottle($profile_id)
+    {
         $profile = Profile::getKV($profile_id);
         if (!$profile instanceof Profile) {
             return false;
@@ -826,42 +837,43 @@ class Notice extends Managed_DataObject
         return true;
     }
 
-	protected $_attachments = -1;
-	
-    function attachments() {
+    protected $_attachments = -1;
 
-		if ($this->_attachments != -1)  {
+    function attachments()
+    {
+
+        if ($this->_attachments != -1) {
             return $this->_attachments;
         }
-		
-        $f2ps = File_to_post::listGet('post_id', array($this->id));
-		
-		$ids = array();
-		
-		foreach ($f2ps[$this->id] as $f2p) {
-            $ids[] = $f2p->file_id;    
-        }
-		
-		$files = File::multiGet('id', $ids);
 
-		$this->_attachments = $files->fetchAll();
-		
+        $f2ps = File_to_post::listGet('post_id', array($this->id));
+
+        $ids = array();
+
+        foreach ($f2ps[$this->id] as $f2p) {
+            $ids[] = $f2p->file_id;
+        }
+
+        $files = File::multiGet('id', $ids);
+
+        $this->_attachments = $files->fetchAll();
+
         return $this->_attachments;
     }
 
-	function _setAttachments($attachments)
-	{
-	    $this->_attachments = $attachments;
-	}
+    function _setAttachments($attachments)
+    {
+        $this->_attachments = $attachments;
+    }
 
-    function publicStream($offset=0, $limit=20, $since_id=0, $max_id=0)
+    function publicStream($offset = 0, $limit = 20, $since_id = 0, $max_id = 0)
     {
         $stream = new PublicNoticeStream();
         return $stream->getNotices($offset, $limit, $since_id, $max_id);
     }
 
 
-    function conversationStream($id, $offset=0, $limit=20, $since_id=0, $max_id=0)
+    function conversationStream($id, $offset = 0, $limit = 20, $since_id = 0, $max_id = 0)
     {
         $stream = new ConversationNoticeStream($id);
 
@@ -895,7 +907,7 @@ class Notice extends Managed_DataObject
      *
      * @return Notice or null
      */
-    function conversationRoot($profile=-1)
+    function conversationRoot($profile = -1)
     {
         // XXX: can this happen?
 
@@ -921,15 +933,15 @@ class Notice extends Managed_DataObject
         if (empty($this->reply_to)) {
             return $this;
         }
-        
+
         if (is_null($profile)) {
             $keypart = sprintf('notice:conversation_root:%d:null', $this->id);
         } else {
             $keypart = sprintf('notice:conversation_root:%d:%d',
-                               $this->id,
-                               $profile->id);
+                $this->id,
+                $profile->id);
         }
-            
+
         $root = self::cacheGet($keypart);
 
         if ($root !== false && $root->inScope($profile)) {
@@ -968,12 +980,12 @@ class Notice extends Managed_DataObject
      *              if left empty, will be loaded from reply records
      * @return array associating recipient user IDs with an inbox source constant
      */
-    function whoGets(array $groups=null, array $recipients=null)
+    function whoGets(array $groups = null, array $recipients = null)
     {
         $c = self::memcache();
 
         if (!empty($c)) {
-            $ni = $c->get(Cache::key('notice:who_gets:'.$this->id));
+            $ni = $c->get(Cache::key('notice:who_gets:' . $this->id));
             if ($ni !== false) {
                 return $ni;
             }
@@ -1006,7 +1018,7 @@ class Notice extends Managed_DataObject
             }
 
             $ptAtts = $this->getAttentionsFromProfileTags();
-            foreach ($ptAtts as $key=>$val) {
+            foreach ($ptAtts as $key => $val) {
                 if (!array_key_exists($key, $ni)) {
                     $ni[$key] = $val;
                 }
@@ -1034,7 +1046,8 @@ class Notice extends Managed_DataObject
                     $user = User::getKV('id', $id);
                     if (!$user instanceof User ||
                         $user->hasBlocked($profile) ||
-                        ($originalProfile && $user->hasBlocked($originalProfile))) {
+                        ($originalProfile && $user->hasBlocked($originalProfile))
+                    ) {
                         unset($ni[$id]);
                     }
                 } catch (UserNoProfileException $e) {
@@ -1049,7 +1062,7 @@ class Notice extends Managed_DataObject
 
         if (!empty($c)) {
             // XXX: pack this data better
-            $c->set(Cache::key('notice:who_gets:'.$this->id), $ni);
+            $c->set(Cache::key('notice:who_gets:' . $this->id), $ni);
         }
 
         return $ni;
@@ -1059,15 +1072,15 @@ class Notice extends Managed_DataObject
     {
         $user = new User();
 
-        if(common_config('db','quote_identifiers'))
-          $user_table = '"user"';
+        if (common_config('db', 'quote_identifiers'))
+            $user_table = '"user"';
         else $user_table = 'user';
 
         $qry =
-          'SELECT id ' .
-          'FROM '. $user_table .' JOIN subscription '.
-          'ON '. $user_table .'.id = subscription.subscriber ' .
-          'WHERE subscription.subscribed = %d ';
+            'SELECT id ' .
+            'FROM ' . $user_table . ' JOIN subscription ' .
+            'ON ' . $user_table . '.id = subscription.subscriber ' .
+            'WHERE subscription.subscribed = %d ';
 
         $user->query(sprintf($qry, $this->profile_id));
 
@@ -1085,10 +1098,10 @@ class Notice extends Managed_DataObject
     function getProfileTags()
     {
         $profile = $this->getProfile();
-        $list    = $profile->getOtherTags($profile);
-        $ptags   = array();
+        $list = $profile->getOtherTags($profile);
+        $ptags = array();
 
-        while($list->fetch()) {
+        while ($list->fetch()) {
             $ptags[] = clone($list);
         }
 
@@ -1138,7 +1151,7 @@ class Notice extends Managed_DataObject
                     // we automatically add a tag for every group name, too
 
                     $tag = Notice_tag::pkeyGet(array('tag' => common_canonical_tag($group->nickname),
-                                                     'notice_id' => $this->id));
+                        'notice_id' => $this->id));
 
                     if (is_null($tag)) {
                         $this->saveTag($group->nickname);
@@ -1157,15 +1170,15 @@ class Notice extends Managed_DataObject
     function addToGroupInbox(User_group $group)
     {
         $gi = Group_inbox::pkeyGet(array('group_id' => $group->id,
-                                         'notice_id' => $this->id));
+            'notice_id' => $this->id));
 
         if (!$gi instanceof Group_inbox) {
 
             $gi = new Group_inbox();
 
-            $gi->group_id  = $group->id;
+            $gi->group_id = $group->id;
             $gi->notice_id = $this->id;
-            $gi->created   = $this->created;
+            $gi->created = $this->created;
 
             $result = $gi->insert();
 
@@ -1191,7 +1204,7 @@ class Notice extends Managed_DataObject
      *
      * Mail notifications etc will be handled later.
      *
-     * @param array  $uris   Array of unique identifier URIs for recipients
+     * @param array $uris Array of unique identifier URIs for recipients
      */
     function saveKnownReplies(array $uris)
     {
@@ -1297,9 +1310,9 @@ class Notice extends Managed_DataObject
     {
         $reply = new Reply();
 
-        $reply->notice_id  = $this->id;
+        $reply->notice_id = $this->id;
         $reply->profile_id = $profileId;
-        $reply->modified   = $this->created;
+        $reply->modified = $this->created;
 
         $reply->insert();
 
@@ -1345,9 +1358,9 @@ class Notice extends Managed_DataObject
     function getReplyProfiles()
     {
         $ids = $this->getReplies();
-        
+
         $profiles = Profile::multiGet('id', $ids);
-        
+
         return $profiles->fetchAll();
     }
 
@@ -1381,9 +1394,9 @@ class Notice extends Managed_DataObject
      *
      * @return array of Group objects
      */
-    
+
     protected $_groups = -1;
-    
+
     function getGroups()
     {
         // Don't save groups for repeats
@@ -1391,28 +1404,26 @@ class Notice extends Managed_DataObject
         if (!empty($this->repeat_of)) {
             return array();
         }
-        
-        if ($this->_groups != -1)
-        {
+
+        if ($this->_groups != -1) {
             return $this->_groups;
         }
-        
+
         $gis = Group_inbox::listGet('notice_id', array($this->id));
 
         $ids = array();
 
-		foreach ($gis[$this->id] as $gi)
-		{
-		    $ids[] = $gi->group_id;
-		}
-		
-		$groups = User_group::multiGet('id', $ids);
-		
-		$this->_groups = $groups->fetchAll();
-		
-		return $this->_groups;
+        foreach ($gis[$this->id] as $gi) {
+            $ids[] = $gi->group_id;
+        }
+
+        $groups = User_group::multiGet('id', $ids);
+
+        $this->_groups = $groups->fetchAll();
+
+        return $this->_groups;
     }
-    
+
     function _setGroups($groups)
     {
         $this->_groups = $groups;
@@ -1426,9 +1437,9 @@ class Notice extends Managed_DataObject
      * @return Activity activity object representing this Notice.
      */
 
-    function asActivity($cur=null)
+    function asActivity($cur = null)
     {
-        $act = self::cacheGet(Cache::codeKey('notice:as-activity:'.$this->id));
+        $act = self::cacheGet(Cache::codeKey('notice:as-activity:' . $this->id));
 
         if ($act instanceof Activity) {
             return $act;
@@ -1437,15 +1448,15 @@ class Notice extends Managed_DataObject
 
         if (Event::handle('StartNoticeAsActivity', array($this, &$act))) {
 
-            $act->id      = $this->uri;
-            $act->time    = strtotime($this->created);
-            $act->link    = $this->bestUrl();
+            $act->id = $this->uri;
+            $act->time = strtotime($this->created);
+            $act->link = $this->bestUrl();
             $act->content = common_xml_safe_str($this->rendered);
 
             $profile = $this->getProfile();
 
-            $act->actor            = ActivityObject::fromProfile($profile);
-            $act->actor->extra[]   = $profile->profileInfo($cur);
+            $act->actor = ActivityObject::fromProfile($profile);
+            $act->actor->extra[] = $profile->profileInfo($cur);
 
             $act->verb = $this->verb;
 
@@ -1465,7 +1476,7 @@ class Notice extends Managed_DataObject
             $tags = $this->getTags();
 
             foreach ($tags as $tag) {
-                $cat       = new AtomCategory();
+                $cat = new AtomCategory();
                 $cat->term = $tag;
 
                 $act->categories[] = $cat;
@@ -1487,7 +1498,7 @@ class Notice extends Managed_DataObject
 
             try {
                 $reply = $this->getParent();
-                $ctx->replyToID  = $reply->uri;
+                $ctx->replyToID = $reply->uri;
                 $ctx->replyToUrl = $reply->bestUrl();
             } catch (Exception $e) {
                 // This is not a reply to something
@@ -1520,13 +1531,13 @@ class Notice extends Managed_DataObject
             }
 
             switch ($this->scope) {
-            case Notice::PUBLIC_SCOPE:
-                $ctx->attention[ActivityContext::ATTN_PUBLIC] = ActivityObject::COLLECTION;
-                break;
-            case Notice::FOLLOWER_SCOPE:
-                $surl = common_local_url("subscribers", array('nickname' => $profile->nickname));
-                $ctx->attention[$surl] = ActivityObject::COLLECTION;
-                break;
+                case Notice::PUBLIC_SCOPE:
+                    $ctx->attention[ActivityContext::ATTN_PUBLIC] = ActivityObject::COLLECTION;
+                    break;
+                case Notice::FOLLOWER_SCOPE:
+                    $surl = common_local_url("subscribers", array('nickname' => $profile->nickname));
+                    $ctx->attention[$surl] = ActivityObject::COLLECTION;
+                    break;
             }
 
             $act->context = $ctx;
@@ -1554,7 +1565,7 @@ class Notice extends Managed_DataObject
                 $act->source->title = $profile->getBestName();
 
                 $act->source->links['alternate'] = $profile->profileurl;
-                $act->source->links['self']      = $atom_feed;
+                $act->source->links['self'] = $atom_feed;
 
                 $act->source->icon = $profile->avatarUrl(AVATAR_PROFILE_SIZE);
 
@@ -1573,14 +1584,178 @@ class Notice extends Managed_DataObject
 
             if ($this->isLocal()) {
                 $act->selfLink = common_local_url('ApiStatusesShow', array('id' => $this->id,
-                                                                           'format' => 'atom'));
+                    'format' => 'atom'));
                 $act->editLink = $act->selfLink;
             }
 
             Event::handle('EndNoticeAsActivity', array($this, &$act));
         }
 
-        self::cacheSet(Cache::codeKey('notice:as-activity:'.$this->id), $act);
+        self::cacheSet(Cache::codeKey('notice:as-activity:' . $this->id), $act);
+
+        return $act;
+    }
+
+    function asAtomActivity($cur = null)
+    {
+        $act = self::cacheGet(Cache::codeKey('notice:as-activity:' . $this->id));
+
+        if ($act instanceof Activity) {
+            return $act;
+        }
+        $act = new Activity();
+        if (Event::handle('StartNoticeAsActivity', array($this, &$act))) {
+
+            $act->id =$this->uri;
+            $act->time = strtotime($this->created);
+            $act->content = common_xml_safe_str($this->rendered);
+
+            $profile = $this->getProfile();
+
+
+            $act->actor = ActivityObject::fromProfile($profile);
+            $act->actor->id=toAbs( $act->actor->id);
+//            $act->actor->link=toAbs( $act->actor->link);
+            $act->actor->extra[] = $profile->profileInfo($cur);
+
+            unset($act->actor->avatarLinks);
+            unset($act->actor->link);
+            unset($act->actor->extra[0]);
+//            var_dump($act->actor);
+            $act->verb = $this->verb;
+
+            if ($this->repeat_of) {
+                $repeated = Notice::getKV('id', $this->repeat_of);
+                if ($repeated instanceof Notice) {
+                    $act->objects[] = $repeated->asActivity($cur);
+                }
+            } else {
+                $act->objects[] = ActivityObject::fromNotice($this,true);
+            }
+
+            // XXX: should this be handled by default processing for object entry?
+
+            // Categories
+
+            $tags = $this->getTags();
+
+            foreach ($tags as $tag) {
+                $cat = new AtomCategory();
+                $cat->term = $tag;
+
+                $act->categories[] = $cat;
+            }
+
+            // Enclosures
+            // XXX: use Atom Media and/or File activity objects instead
+
+            $attachments = $this->attachments();
+
+            foreach ($attachments as $attachment) {
+                // Save local attachments
+                if (!empty($attachment->filename)) {
+                    $act->attachments[] = ActivityObject::fromFile($attachment);
+                }
+            }
+
+            $ctx = new ActivityContext();
+
+            try {
+                $reply = $this->getParent();
+                $ctx->replyToID = $reply->uri;
+                $ctx->replyToUrl = $reply->bestUrl();
+            } catch (Exception $e) {
+                // This is not a reply to something
+            }
+
+            $ctx->location = $this->getLocation();
+
+            $conv = null;
+
+            if (!empty($this->conversation)) {
+                $conv = Conversation::getKV('id', $this->conversation);
+                if ($conv instanceof Conversation) {
+                    $ctx->conversation = $conv->uri;
+                }
+            }
+
+            $reply_ids = $this->getReplies();
+
+            foreach ($reply_ids as $id) {
+                $rprofile = Profile::getKV('id', $id);
+                if ($rprofile instanceof Profile) {
+                    $ctx->attention[$rprofile->getUri()] = ActivityObject::PERSON;
+                }
+            }
+
+            $groups = $this->getGroups();
+
+            foreach ($groups as $group) {
+                $ctx->attention[$group->getUri()] = ActivityObject::GROUP;
+            }
+
+            switch ($this->scope) {
+                case Notice::PUBLIC_SCOPE:
+                    $ctx->attention[ActivityContext::ATTN_PUBLIC] = ActivityObject::COLLECTION;
+                    break;
+                case Notice::FOLLOWER_SCOPE:
+                    $surl = common_local_url("subscribers", array('nickname' => $profile->nickname));
+                    $ctx->attention[$surl] = ActivityObject::COLLECTION;
+                    break;
+            }
+
+            $act->context = $ctx;
+
+            $source = $this->getSource();
+
+            if ($source instanceof Notice_source) {
+                $act->generator = ActivityObject::fromNoticeSource($source);
+            }
+
+            // Source
+
+            $atom_feed = $profile->getAtomFeed();
+
+            if (!empty($atom_feed)) {
+
+                $act->source = new ActivitySource();
+
+                // XXX: we should store the actual feed ID
+
+                $act->source->id =toAbs( $atom_feed);
+
+                // XXX: we should store the actual feed title
+
+                $act->source->title = $profile->getBestName();
+
+                $act->source->links['alternate'] =toAbs( $profile->profileurl);
+                $act->source->links['self'] =toAbs( $atom_feed);
+
+                $act->source->icon =toAbs( $profile->avatarUrl(AVATAR_PROFILE_SIZE));
+
+                $notice = $profile->getCurrentNotice();
+
+                if ($notice instanceof Notice) {
+                    $act->source->updated = self::utcDate($notice->created);
+                }
+
+                $user = User::getKV('id', $profile->id);
+
+                if ($user instanceof User) {
+                    $act->source->links['license'] = common_config('license', 'url');
+                }
+            }
+
+            if ($this->isLocal()) {
+                $act->selfLink =toAbs( common_local_url('ApiStatusesShow', array('id' => $this->id,
+                    'format' => 'atom')));
+                $act->editLink = $act->selfLink;
+            }
+
+            Event::handle('EndNoticeAsActivity', array($this, &$act));
+        }
+
+        self::cacheSet(Cache::codeKey('notice:as-activity:' . $this->id), $act);
 
         return $act;
     }
@@ -1588,14 +1763,17 @@ class Notice extends Managed_DataObject
     // This has gotten way too long. Needs to be sliced up into functional bits
     // or ideally exported to a utility class.
 
-    function asAtomEntry($namespace=false,
-                         $source=false,
-                         $author=true,
-                         $cur=null)
+    function asAtomEntry($namespace = false,
+                         $source = false,
+                         $author = true,
+                         $cur = null)
     {
-        $act = $this->asActivity($cur);
+        $act = $this->asAtomActivity($cur);
         $act->extra[] = $this->noticeInfo($cur);
-        return $act->asString($namespace, $author, $source);
+
+        $result= $act->asString($namespace, $author, $source,true);
+
+        return $result;
     }
 
     /**
@@ -1620,11 +1798,11 @@ class Notice extends Managed_DataObject
         $ns = $this->getSource();
 
         if ($ns instanceof Notice_source) {
-            $noticeInfoAttr['source'] =  $ns->code;
+            $noticeInfoAttr['source'] = $ns->code;
             if (!empty($ns->url)) {
                 $noticeInfoAttr['source_link'] = $ns->url;
                 if (!empty($ns->name)) {
-                    $noticeInfoAttr['source'] =  '<a href="'
+                    $noticeInfoAttr['source'] = '<a href="'
                         . htmlspecialchars($ns->url)
                         . '" rel="nofollow">'
                         . htmlspecialchars($ns->name)
@@ -1664,16 +1842,22 @@ class Notice extends Managed_DataObject
         return $noun->asString('activity:' . $element);
     }
 
-    function bestUrl()
+    function bestUrl($isAbsolute=false)
     {
+        $urlStr ;
         if (!empty($this->url)) {
-            return $this->url;
+            $urlStr = $this->url;
         } else if (!empty($this->uri) && preg_match('/^https?:/', $this->uri)) {
-            return $this->uri;
+            $urlStr = $this->uri;
         } else {
-            return common_local_url('shownotice',
-                                    array('notice' => $this->id));
+            $urlStr = common_local_url('shownotice',
+                array('notice' => $this->id),null,null,true,$isAbsolute);
         }
+//        if ($isAbsolute) {
+//            $urlStr = common_path($urlStr, false, false, true);
+//        }
+//        echo $urlStr;
+        return $urlStr;
     }
 
 
@@ -1692,10 +1876,10 @@ class Notice extends Managed_DataObject
      * Note that all @nickname instances will still be used to save "reply" records,
      * so the notice shows up in the mentioned users' "replies" tab.
      *
-     * @param integer $reply_to   ID passed in by Web or API
+     * @param integer $reply_to ID passed in by Web or API
      * @param integer $profile_id ID of author
-     * @param string  $source     Source tag, like 'web' or 'gwibber'
-     * @param string  $content    Final notice content
+     * @param string $source Source tag, like 'web' or 'gwibber'
+     * @param string $content Final notice content
      *
      * @return integer ID of replied-to notice, or null for not a reply.
      */
@@ -1725,7 +1909,8 @@ class Notice extends Managed_DataObject
         // Is there an initial @ or T?
 
         if (preg_match('/^T ([A-Z0-9]{1,64}) /', $content, $match) ||
-            preg_match('/^@([a-z0-9]{1,64})\s+/', $content, $match)) {
+            preg_match('/^@([a-z0-9]{1,64})\s+/', $content, $match)
+        ) {
             $nickname = common_canonical_nickname($match[1]);
         } else {
             return null;
@@ -1791,8 +1976,8 @@ class Notice extends Managed_DataObject
     /**
      * Convenience function for posting a repeat of an existing message.
      *
-     * @param int $repeater_id: profile ID of user doing the repeat
-     * @param string $source: posting source key, eg 'web', 'api', etc
+     * @param int $repeater_id : profile ID of user doing the repeat
+     * @param string $source : posting source key, eg 'web', 'api', etc
      * @return Notice
      *
      * @throws Exception on failure or permission problems
@@ -1804,8 +1989,8 @@ class Notice extends Managed_DataObject
         // TRANS: Message used to repeat a notice. RT is the abbreviation of 'retweet'.
         // TRANS: %1$s is the repeated user's name, %2$s is the repeated notice.
         $content = sprintf(_('RT @%1$s %2$s'),
-                           $author->nickname,
-                           $this->content);
+            $author->nickname,
+            $this->content);
 
         $maxlen = common_config('site', 'textlimit');
         if ($maxlen > 0 && mb_strlen($content) > $maxlen) {
@@ -1821,31 +2006,31 @@ class Notice extends Managed_DataObject
         // Scope is same as this one's
 
         return self::saveNew($repeater_id,
-                             $content,
-                             $source,
-                             array('repeat_of' => $this->id,
-                                   'scope' => $this->scope));
+            $content,
+            $source,
+            array('repeat_of' => $this->id,
+                'scope' => $this->scope));
     }
 
     // These are supposed to be in chron order!
 
-    function repeatStream($limit=100)
+    function repeatStream($limit = 100)
     {
         $cache = Cache::instance();
 
         if (empty($cache)) {
             $ids = $this->_repeatStreamDirect($limit);
         } else {
-            $idstr = $cache->get(Cache::key('notice:repeats:'.$this->id));
+            $idstr = $cache->get(Cache::key('notice:repeats:' . $this->id));
             if ($idstr !== false) {
-            	if (empty($idstr)) {
-            		$ids = array();
-            	} else {
-                	$ids = explode(',', $idstr);
-            	}
+                if (empty($idstr)) {
+                    $ids = array();
+                } else {
+                    $ids = explode(',', $idstr);
+                }
             } else {
                 $ids = $this->_repeatStreamDirect(100);
-                $cache->set(Cache::key('notice:repeats:'.$this->id), implode(',', $ids));
+                $cache->set(Cache::key('notice:repeats:' . $this->id), implode(',', $ids));
             }
             if ($limit < 100) {
                 // We do a max of 100, so slice down to limit
@@ -1949,7 +2134,7 @@ class Notice extends Managed_DataObject
         $reply->notice_id = $this->id;
 
         if ($reply->find()) {
-            while($reply->fetch()) {
+            while ($reply->fetch()) {
                 self::blow('reply:stream:%d', $reply->profile_id);
                 $reply->delete();
             }
@@ -2078,8 +2263,8 @@ class Notice extends Managed_DataObject
                 $c = self::memcache();
                 if (!empty($c)) {
                     $ck = self::multicacheKey('Notice',
-                                              array('profile_id' => $this->profile_id,
-                                                    'repeat_of' => $this->repeat_of));
+                        array('profile_id' => $this->profile_id,
+                            'repeat_of' => $this->repeat_of));
                     $c->delete($ck);
                 }
             }
@@ -2099,26 +2284,26 @@ class Notice extends Managed_DataObject
         $ns = new Notice_source();
         if (!empty($this->source)) {
             switch ($this->source) {
-            case 'web':
-            case 'xmpp':
-            case 'mail':
-            case 'omb':
-            case 'system':
-            case 'api':
-                $ns->code = $this->source;
-                break;
-            default:
-                $ns = Notice_source::getKV($this->source);
-                if (!$ns) {
-                    $ns = new Notice_source();
+                case 'web':
+                case 'xmpp':
+                case 'mail':
+                case 'omb':
+                case 'system':
+                case 'api':
                     $ns->code = $this->source;
-                    $app = Oauth_application::getKV('name', $this->source);
-                    if ($app) {
-                        $ns->name = $app->name;
-                        $ns->url  = $app->source_url;
+                    break;
+                default:
+                    $ns = Notice_source::getKV($this->source);
+                    if (!$ns) {
+                        $ns = new Notice_source();
+                        $ns->code = $this->source;
+                        $app = Oauth_application::getKV('name', $this->source);
+                        if ($app) {
+                            $ns->name = $app->name;
+                            $ns->url = $app->source_url;
+                        }
                     }
-                }
-                break;
+                    break;
             }
         }
         return $ns;
@@ -2133,7 +2318,7 @@ class Notice extends Managed_DataObject
     public function isLocal()
     {
         return ($this->is_local == Notice::LOCAL_PUBLIC ||
-                $this->is_local == Notice::LOCAL_NONPUBLIC);
+            $this->is_local == Notice::LOCAL_NONPUBLIC);
     }
 
     /**
@@ -2209,7 +2394,7 @@ class Notice extends Managed_DataObject
      * @param string $createdField
      * @return mixed string or false if no match
      */
-    public static function whereSinceId($id, $idField='id', $createdField='created')
+    public static function whereSinceId($id, $idField = 'id', $createdField = 'created')
     {
         $since = Notice::getAsTimestamp($id);
         if ($since) {
@@ -2229,7 +2414,7 @@ class Notice extends Managed_DataObject
      * @param string $createdField
      * @return mixed string or false if no match
      */
-    public static function addWhereSinceId(DB_DataObject $obj, $id, $idField='id', $createdField='created')
+    public static function addWhereSinceId(DB_DataObject $obj, $id, $idField = 'id', $createdField = 'created')
     {
         $since = self::whereSinceId($id, $idField, $createdField);
         if ($since) {
@@ -2248,7 +2433,7 @@ class Notice extends Managed_DataObject
      * @param string $createdField
      * @return mixed string or false if no match
      */
-    public static function whereMaxId($id, $idField='id', $createdField='created')
+    public static function whereMaxId($id, $idField = 'id', $createdField = 'created')
     {
         $max = Notice::getAsTimestamp($id);
         if ($max) {
@@ -2268,7 +2453,7 @@ class Notice extends Managed_DataObject
      * @param string $createdField
      * @return mixed string or false if no match
      */
-    public static function addWhereMaxId(DB_DataObject $obj, $id, $idField='id', $createdField='created')
+    public static function addWhereMaxId(DB_DataObject $obj, $id, $idField = 'id', $createdField = 'created')
     {
         $max = self::whereMaxId($id, $idField, $createdField);
         if ($max) {
@@ -2282,7 +2467,7 @@ class Notice extends Managed_DataObject
             return ($this->is_local == Notice::LOCAL_PUBLIC);
         } else {
             return (($this->is_local != Notice::LOCAL_NONPUBLIC) &&
-                    ($this->is_local != Notice::GATEWAY));
+                ($this->is_local != Notice::GATEWAY));
         }
     }
 
@@ -2362,8 +2547,8 @@ class Notice extends Managed_DataObject
             if ($scope & Notice::ADDRESSEE_SCOPE) {
 
                 $reply = Reply::pkeyGet(array('notice_id' => $this->id,
-                                             'profile_id' => $profile->id));
-										 
+                    'profile_id' => $profile->id));
+
                 if (!$reply instanceof Reply) {
                     return false;
                 }
@@ -2402,7 +2587,7 @@ class Notice extends Managed_DataObject
                 } catch (Exception $e) {
                     return false;
                 }
-        
+
                 if (!Subscription::exists($profile, $author)) {
                     return false;
                 }
@@ -2412,15 +2597,16 @@ class Notice extends Managed_DataObject
         }
     }
 
-    function isHiddenSpam($profile) {
-        
+    function isHiddenSpam($profile)
+    {
+
         // Hide posts by silenced users from everyone but moderators.
 
         if (common_config('notice', 'hidespam')) {
 
             try {
                 $author = $this->getProfile();
-            } catch(Exception $e) {
+            } catch (Exception $e) {
                 // If we can't get an author, keep it hidden.
                 // XXX: technically not spam, but, whatever.
                 return true;
@@ -2463,88 +2649,85 @@ class Notice extends Managed_DataObject
         $skip = array('_profile', '_groups', '_attachments', '_faves', '_replies', '_repeats');
         return array_diff($vars, $skip);
     }
-    
+
     static function defaultScope()
     {
-    	$scope = common_config('notice', 'defaultscope');
-    	if (is_null($scope)) {
-    		if (common_config('site', 'private')) {
-    			$scope = 1;
-    		} else {
-    			$scope = 0;
-    		}
-    	}
-    	return $scope;
+        $scope = common_config('notice', 'defaultscope');
+        if (is_null($scope)) {
+            if (common_config('site', 'private')) {
+                $scope = 1;
+            } else {
+                $scope = 0;
+            }
+        }
+        return $scope;
     }
 
-	static function fillProfiles($notices)
-	{
-		$map = self::getProfiles($notices);
-		
-		foreach ($notices as $entry=>$notice) {
+    static function fillProfiles($notices)
+    {
+        $map = self::getProfiles($notices);
+
+        foreach ($notices as $entry => $notice) {
             try {
-    			if (array_key_exists($notice->profile_id, $map)) {
-	    			$notice->_setProfile($map[$notice->profile_id]);
-		    	}
+                if (array_key_exists($notice->profile_id, $map)) {
+                    $notice->_setProfile($map[$notice->profile_id]);
+                }
             } catch (NoProfileException $e) {
                 common_log(LOG_WARNING, "Failed to fill profile in Notice with non-existing entry for profile_id: {$e->id}");
                 unset($notices[$entry]);
             }
-		}
-		
-		return array_values($map);
-	}
-	
-	static function getProfiles(&$notices)
-	{
-		$ids = array();
-		foreach ($notices as $notice) {
-			$ids[] = $notice->profile_id;
-		}
-		
-		$ids = array_unique($ids);
-		
-		return Profile::pivotGet('id', $ids); 
-	}
-	
-	static function fillGroups(&$notices)
-	{
+        }
+
+        return array_values($map);
+    }
+
+    static function getProfiles(&$notices)
+    {
+        $ids = array();
+        foreach ($notices as $notice) {
+            $ids[] = $notice->profile_id;
+        }
+
+        $ids = array_unique($ids);
+
+        return Profile::pivotGet('id', $ids);
+    }
+
+    static function fillGroups(&$notices)
+    {
         $ids = self::_idsOf($notices);
-		
+
         $gis = Group_inbox::listGet('notice_id', $ids);
-		
+
         $gids = array();
 
-		foreach ($gis as $id => $gi)
-		{
-		    foreach ($gi as $g)
-		    {
-		        $gids[] = $g->group_id;
-		    }
-		}
-		
-		$gids = array_unique($gids);
-		
-		$group = User_group::pivotGet('id', $gids);
-		
-		foreach ($notices as $notice)
-		{
-			$grps = array();
-			$gi = $gis[$notice->id];
-			foreach ($gi as $g) {
-			    $grps[] = $group[$g->group_id];
-			}
-		    $notice->_setGroups($grps);
-		}
-	}
+        foreach ($gis as $id => $gi) {
+            foreach ($gi as $g) {
+                $gids[] = $g->group_id;
+            }
+        }
+
+        $gids = array_unique($gids);
+
+        $group = User_group::pivotGet('id', $gids);
+
+        foreach ($notices as $notice) {
+            $grps = array();
+            $gi = $gis[$notice->id];
+            foreach ($gi as $g) {
+                $grps[] = $group[$g->group_id];
+            }
+            $notice->_setGroups($grps);
+        }
+    }
 
     static function _idsOf(&$notices)
     {
-		$ids = array();
-		foreach ($notices as $notice) {
-			$ids[] = $notice->id;
-		}
-		$ids = array_unique($ids);
+        $ids = array();
+        foreach ($notices as $notice) {
+            $ids[] = $notice->id;
+        }
+        $ids = array_unique($ids);
         return $ids;
     }
 
@@ -2553,28 +2736,27 @@ class Notice extends Managed_DataObject
         $ids = self::_idsOf($notices);
 
         $f2pMap = File_to_post::listGet('post_id', $ids);
-		
-		$fileIds = array();
-		
-		foreach ($f2pMap as $noticeId => $f2ps) {
+
+        $fileIds = array();
+
+        foreach ($f2pMap as $noticeId => $f2ps) {
             foreach ($f2ps as $f2p) {
-                $fileIds[] = $f2p->file_id;    
+                $fileIds[] = $f2p->file_id;
             }
         }
 
         $fileIds = array_unique($fileIds);
 
-		$fileMap = File::pivotGet('id', $fileIds);
+        $fileMap = File::pivotGet('id', $fileIds);
 
-		foreach ($notices as $notice)
-		{
-			$files = array();
-			$f2ps = $f2pMap[$notice->id];
-			foreach ($f2ps as $f2p) {
-			    $files[] = $fileMap[$f2p->file_id];
-			}
-		    $notice->_setAttachments($files);
-		}
+        foreach ($notices as $notice) {
+            $files = array();
+            $f2ps = $f2pMap[$notice->id];
+            foreach ($f2ps as $f2p) {
+                $files[] = $fileMap[$f2p->file_id];
+            }
+            $notice->_setAttachments($files);
+        }
     }
 
     protected $_faves;
@@ -2613,7 +2795,7 @@ class Notice extends Managed_DataObject
             }
         }
         foreach ($notices as $notice) {
-        	$faves = $faveMap[$notice->id];
+            $faves = $faveMap[$notice->id];
             $notice->_setFaves($faves);
         }
     }
@@ -2654,7 +2836,7 @@ class Notice extends Managed_DataObject
         $ids = self::_idsOf($notices);
         $repeatMap = Notice::listGet('repeat_of', $ids);
         foreach ($notices as $notice) {
-        	$repeats = $repeatMap[$notice->id];
+            $repeats = $repeatMap[$notice->id];
             $notice->_setRepeats($repeats);
         }
     }

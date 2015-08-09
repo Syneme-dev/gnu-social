@@ -1313,6 +1313,43 @@ function common_path($relative, $ssl=false, $addSession=true,$isAbsolute=false)
     return $url;
 }
 
+function toAbs($relative)
+{
+    $pathpart = (common_config('site', 'path')) ? common_config('site', 'path')."/" : '';
+
+    if (($ssl && (common_config('site', 'ssl') === 'sometimes'))
+        || common_config('site', 'ssl') === 'always') {
+        $proto = 'https';
+        if (is_string(common_config('site', 'sslserver')) &&
+            mb_strlen(common_config('site', 'sslserver')) > 0) {
+            $serverpart = common_config('site', 'sslserver');
+        } else if (common_config('site', 'server')) {
+            $serverpart = common_config('site', 'server');
+        } else {
+            common_log(LOG_ERR, 'Site server not configured, unable to determine site name.');
+        }
+    } else {
+        $proto = 'http';
+        if (common_config('site', 'server')) {
+            $serverpart = common_config('site', 'server');
+        } else {
+            common_log(LOG_ERR, 'Site server not configured, unable to determine site name.');
+        }
+    }
+
+    if ($addSession) {
+        $relative = common_inject_session($relative, $serverpart);
+    }
+    //domain name should be enable to change by request from different domain.
+    if(strpos( $relative,$proto.'://')){
+        return $relative;
+    }
+    //using related url.
+    $serverpart= $_SERVER['HTTP_HOST'];
+        $url= $proto.'://'.$serverpart.'/'.$pathpart.$relative;
+    return $url;
+}
+
 function common_inject_session($url, $serverpart = null)
 {
     if (!common_have_session()) {

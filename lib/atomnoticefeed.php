@@ -94,7 +94,19 @@ class AtomNoticeFeed extends Atom10Feed
         );
 
         $this->addNamespace(
+            'status_net',
+            'http://status.net/schema/api/1/'
+        );
+        $this->addNamespace(
             'statusnet',
+            'http://status.net/schema/api/1/'
+        );
+        $this->addNamespace(
+            'link',
+            'http://status.net/schema/api/1/'
+        );
+        $this->addNamespace(
+            'followers',
             'http://status.net/schema/api/1/'
         );
     }
@@ -130,7 +142,6 @@ class AtomNoticeFeed extends Atom10Feed
             $author = $this->showAuthor();
 
             $cur = empty($this->cur) ? common_current_user() : $this->cur;
-
             $this->addEntryRaw($notice->asAtomEntry(false, $source, $author, $cur));
         } catch (Exception $e) {
             common_log(LOG_ERR, $e->getMessage());

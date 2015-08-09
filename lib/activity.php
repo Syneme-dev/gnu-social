@@ -525,15 +525,17 @@ class Activity
         return array_filter($activity);
     }
 
-    function asString($namespace=false, $author=true, $source=false)
+    function asString($namespace=false, $author=true, $source=false,$atomOutput=false)
     {
         $xs = new XMLStringer(true);
-        $this->outputTo($xs, $namespace, $author, $source);
+        $this->outputTo($xs, $namespace, $author, $source,'entry',true,$atomOutput);
+//        var_dump($xs->getString());
         return $xs->getString();
     }
 
-    function outputTo($xs, $namespace=false, $author=true, $source=false, $tag='entry')
+    function outputTo($xs, $namespace=false, $author=true, $source=false, $tag='entry',$isAbs=false,$atomOutput=false)
     {
+
         if ($namespace) {
             $attrs = array('xmlns' => 'http://www.w3.org/2005/Atom',
                            'xmlns:thr' => 'http://purl.org/syndication/thread/1.0',
@@ -542,6 +544,7 @@ class Activity
                            'xmlns:ostatus' => 'http://ostatus.org/schema/1.0',
                            'xmlns:poco' => 'http://portablecontacts.net/spec/1.0',
                            'xmlns:media' => 'http://purl.org/syndication/atommedia',
+                'xmlns:status_net' => 'http://status.net/schema/api/1/',
                            'xmlns:statusnet' => 'http://status.net/schema/api/1/');
         } else {
             $attrs = array();
@@ -556,10 +559,37 @@ class Activity
         if ($this->verb == ActivityVerb::POST && count($this->objects) == 1 && $tag == 'entry') {
 
             $obj = $this->objects[0];
+
+            $obj->id=$isAbs?toAbs($obj->id): $obj->id;
+            $obj->link=$isAbs?toAbs($obj->link): $obj->link;
+            if($atomOutput){
+                unset($obj->extra);
+            }
+//            var_dump($obj);
+//            $xs->element('id', null,$isAbs?toAbs($this->id): $this->id);
+
+//            if ($this->title) {
+//                $xs->element('title', null, $this->title);
+//            } else {
+//                // Require element
+//                $xs->element('title', null, "");
+//            }
+//
+//            $xs->element('content', array('type' => 'html'), $this->content);
+//
+//            if (!empty($this->summary)) {
+//                $xs->element('summary', null, $this->summary);
+//            }
+//
+//            if (!empty($this->link)) {
+//                $xs->element('link', array('rel' => 'alternate',
+//                        'type' => 'text/html'),
+//                    $isAbs?toAbs($this->link):  $this->link);
+//            }
 			$obj->outputTo($xs, null);
 
         } else {
-            $xs->element('id', null, $this->id);
+            $xs->element('id', null,$isAbs?toAbs($this->id): $this->id);
 
             if ($this->title) {
                 $xs->element('title', null, $this->title);
@@ -577,7 +607,7 @@ class Activity
             if (!empty($this->link)) {
                 $xs->element('link', array('rel' => 'alternate',
                                            'type' => 'text/html'),
-                             $this->link);
+                    $isAbs?toAbs($this->link):  $this->link);
             }
 
         }
@@ -608,22 +638,22 @@ class Activity
             if (!empty($this->context->replyToID)) {
                 if (!empty($this->context->replyToUrl)) {
                     $xs->element('thr:in-reply-to',
-                                 array('ref' => $this->context->replyToID,
-                                       'href' => $this->context->replyToUrl));
+                                 array('ref' => $isAbs?toAbs($this->context->replyToID): $this->context->replyToID,
+                                       'href' =>$isAbs?toAbs($this->context->replyToUrl): $this->context->replyToUrl));
                 } else {
                     $xs->element('thr:in-reply-to',
-                                 array('ref' => $this->context->replyToID));
+                                 array('ref' =>$isAbs?toAbs($this->context->replyToID): $this->context->replyToID));
                 }
             }
 
             if (!empty($this->context->replyToUrl)) {
                 $xs->element('link', array('rel' => 'related',
-                                           'href' => $this->context->replyToUrl));
+                                           'href' => $isAbs?toAbs($this->context->replyToUrl): $this->context->replyToUrl));
             }
 
             if (!empty($this->context->conversation)) {
                 $xs->element('link', array('rel' => ActivityContext::CONVERSATION,
-                                           'href' => $this->context->conversation));
+                                           'href' => $isAbs?toAbs($this->context->conversation): $this->context->conversation ));
             }
 
             foreach ($this->context->attention as $attnURI=>$type) {
