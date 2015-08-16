@@ -271,7 +271,6 @@ function twitterUserArray($profile, $get_notice=false)
     function twitterUserArrayBakArtsmesh($profile, $get_notice=false)
     {
 
-        var_dump(($profile instanceof Profile));
         $twitter_user = array();
         try {
             $user = $profile->getUser();

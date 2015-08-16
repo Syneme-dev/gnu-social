@@ -107,7 +107,6 @@ class LoginAction extends FormAction
         if ($this->boolean('rememberme')) {
             common_rememberme($user);
         }
-        echo $this->boolean('fromMac');
         if ($this->boolean('fromMac')) {
                       $url = common_local_url('showstream', array('nickname' => $this->scoped->nickname),array('fromMac'=>'true'));
                       common_redirect($url, 303);

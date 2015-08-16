@@ -114,7 +114,7 @@ class ApiTimelineUserAction extends ApiBareAuthAction
         $link = common_local_url(
                                  'showstream',
                                  array('nickname' => $this->target->nickname)
-                                 );
+                                 ,null,null,true,true);
 
         $self = $this->getSelfUri();
 
@@ -186,7 +186,6 @@ class ApiTimelineUserAction extends ApiBareAuthAction
                                      'type' => 'application/atom+xml'));
 
             }
-
             $atom->addEntryFromNotices($this->notices);
             $this->raw($atom->getString());
 

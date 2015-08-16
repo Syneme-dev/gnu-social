@@ -1621,7 +1621,7 @@ class Notice extends Managed_DataObject
             unset($act->actor->avatarLinks);
             unset($act->actor->link);
             unset($act->actor->extra[0]);
-//            var_dump($act->actor);
+
             $act->verb = $this->verb;
 
             if ($this->repeat_of) {
@@ -1710,6 +1710,7 @@ class Notice extends Managed_DataObject
 
             if ($source instanceof Notice_source) {
                 $act->generator = ActivityObject::fromNoticeSource($source);
+
             }
 
             // Source
@@ -1770,8 +1771,7 @@ class Notice extends Managed_DataObject
     {
         $act = $this->asAtomActivity($cur);
         $act->extra[] = $this->noticeInfo($cur);
-
-        $result= $act->asString($namespace, $author, $source,true);
+        $result= $act->asString($namespace, $author, $source,true,true);
 
         return $result;
     }

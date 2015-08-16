@@ -86,8 +86,11 @@ class AtomGroupNoticeFeed extends AtomNoticeFeed
         $this->setSelfLink($self);
 
         $ao = ActivityObject::fromGroup($group);
+        unset($ao->avatarLinks);
+        unset($ao->extra[0]);
+        unset($ao->link);
 
-        $this->addAuthorRaw($ao->asString('author'));
+        $this->addAuthorRaw($ao->asString('author',true));
 
         $this->addLink($group->homeUrl());
     }

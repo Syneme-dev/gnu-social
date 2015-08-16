@@ -66,7 +66,10 @@ class AtomUserNoticeFeed extends AtomNoticeFeed
 
             array_push($ao->extra, $profile->profileInfo($cur));
 
-            $this->addAuthorRaw($ao->asString('author'));
+            unset($ao->avatarLinks);
+            unset($ao->extra[0]);
+            unset($ao->link);
+            $this->addAuthorRaw($ao->asString('author',true));
         }
 
         // TRANS: Title in atom user notice feed. %s is a user name.

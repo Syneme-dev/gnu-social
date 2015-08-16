@@ -98,11 +98,12 @@ class ApiTimelineGroupAction extends ApiPrivateAuthAction
     {
         // We'll pull common formatting out of this for other formats
         $atom = new AtomGroupNoticeFeed($this->group, $this->auth_user);
-
+        $atom->id=toAbs($atom->id);
         $self = $this->getSelfUri();
 
         $link = common_local_url('showgroup',
-                                 array('nickname' => $this->group->nickname));
+                                 array('nickname' => $this->group->nickname),null,null,true,true);
+        $absLogoPath=   common_path(  $atom->logo,false,true,true);
 
         switch($this->format) {
         case 'xml':
@@ -112,10 +113,10 @@ class ApiTimelineGroupAction extends ApiPrivateAuthAction
             $this->showRssTimeline(
                 $this->notices,
                 $atom->title,
-                $this->group->homeUrl(),
+                $link,
                 $atom->subtitle,
                 null,
-                $atom->logo,
+                $absLogoPath,
                 $self
             );
             break;

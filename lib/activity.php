@@ -529,7 +529,6 @@ class Activity
     {
         $xs = new XMLStringer(true);
         $this->outputTo($xs, $namespace, $author, $source,'entry',true,$atomOutput);
-//        var_dump($xs->getString());
         return $xs->getString();
     }
 
@@ -620,6 +619,7 @@ class Activity
         $xs->element('updated', null, $published);
 
         if ($author) {
+
             $this->actor->outputTo($xs, 'author');
         }
 
@@ -750,7 +750,6 @@ class Activity
         }
 
         $xs->elementEnd($tag);
-
         return;
     }
 

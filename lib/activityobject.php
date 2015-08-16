@@ -662,7 +662,7 @@ class ActivityObject
         return $object;
     }
 
-    function outputTo($xo, $tag='activity:object')
+    function outputTo($xo, $tag='activity:object',$isAbs=false)
     {
         if (!empty($tag)) {
             $xo->elementStart($tag);
@@ -674,7 +674,7 @@ class ActivityObject
             // <author> uses URI
 
             if ($tag == 'author') {
-                $xo->element(self::URI, null, $this->id);
+                $xo->element(self::URI, null,$isAbs?toAbs($this->id): $this->id);
             } else {
                 $xo->element(self::ID, null, $this->id);
             }
@@ -773,11 +773,11 @@ class ActivityObject
         return;
     }
 
-    function asString($tag='activity:object')
+    function asString($tag='activity:object',$isAbs=false)
     {
         $xs = new XMLStringer(true);
 
-        $this->outputTo($xs, $tag);
+        $this->outputTo($xs, $tag,$isAbs);
 
         return $xs->getString();
     }
