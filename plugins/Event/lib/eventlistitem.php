@@ -75,6 +75,7 @@ class EventListItem extends NoticeListItemAdapter
         if (!empty($event->url)) {
             $out->element('a',
                           array('href' => $event->url,
+                              'onclick'=>"if(typeof(socialViewController)!='undefined'){socialViewController.showVideoPopUp_('".$event->url."');return false;}else{return true;}",
                                 'class' => 'event-title entry-title summary'),
                           $event->title);
                            $out->element('br');
