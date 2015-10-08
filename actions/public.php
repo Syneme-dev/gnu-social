@@ -280,7 +280,7 @@ class PublicAction extends Action
    // $this->element('img', array('id' =>'mapView','src' => $filename,'width'=>
    // '100%','style'=>'position:absolute;z-index:0;','onclick'=>'if(typeof( window.isShow) ==\'undefined\'||window.isShow){ $(\'#youtubeFrame\').show();window.isShow=false;}else{$(\'#youtubeFrame\').hide();window.isShow=true;}'));
     $this->element('iframe', array('id' =>'circle',
-                                        'src' => 'http://artsmesh.io/circle/bundle-test.html',
+                                        'src' => common_path('circle/bundle-test.html'),
 //        'src' => 'http://localhost/gnu-social/circle/bundle-test.html',
                                         'width'=>'1200',
                                         'height'=>'768',

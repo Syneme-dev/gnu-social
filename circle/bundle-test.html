@@ -40,7 +40,8 @@ var w = 960,
 	ryPush = ry + 70;//+ 50;
 
 var splines = [];
-
+var domainName='http://syneme.ccom.edu.cn/statusnet/index.php';
+//http://artsmesh.io
 var cluster = d3.layout.cluster()
         .size([360, ry - 120])
         .sort(function (a, b) {
@@ -83,7 +84,7 @@ svg.append("svg:path")
         .on("mousedown", mousedown);
 
 //Create the circle here
-d3.json("http://artsmesh.io/api/statusnet/groups/list_details.json", function (classes) {
+d3.json(domainName+ "/api/statusnet/groups/list_details.json", function (classes) {
 //d3.json("flare-imports.json", function(classes) {
     var nodes = cluster.nodes(packages.root(classes)),
 
@@ -147,10 +148,10 @@ d3.json("http://artsmesh.io/api/statusnet/groups/list_details.json", function (c
 	    .on("click", function (d) {
                 if (d.children) {
 //                    parent.window.location.href='app:nodeClick:group:'+ d.key;
-                    window.location.href="http://artsmesh.io/group/"+ d.key;
+                    window.location.href=domainName+"/group/"+ d.key;
                 }
                 else{
-                    window.location.href="http://artsmesh.io/"+ d.key;
+                    window.location.href=domainName+ d.key;
 //                parent.window.location.href='app:nodeClick:'+ d.key;
                 }
             })
@@ -164,7 +165,7 @@ d3.json("http://artsmesh.io/api/statusnet/groups/list_details.json", function (c
         });
     });
     //Once layout complete, resize the generated graphic to fit the page
-    resizeBundle(cur_scale);
+//    resizeBundle(cur_scale);
 });
 
 d3.select(window)
