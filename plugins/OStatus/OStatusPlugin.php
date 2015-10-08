@@ -166,7 +166,7 @@ class OStatusPlugin extends Plugin
             $hub = common_config('ostatus', 'hub');
             if (empty($hub)) {
                 // Updates will be handled through our internal PuSH hub.
-                $hub = common_local_url('pushhub');
+                $hub = common_local_abs_url('pushhub');
             }
             $feed->addLink($hub, array('rel' => 'hub'));
 
