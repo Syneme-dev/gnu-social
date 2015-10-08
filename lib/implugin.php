@@ -267,7 +267,7 @@ abstract class ImPlugin extends Plugin
           ' . (If you cannot click it, copy-and-paste it into the ' .
           'address bar of your browser). If that user is not you, ' .
           'or if you did not request this confirmation, just ignore this message.'),
-          $user->nickname, common_config('site', 'name'), $this->getDisplayName(), common_local_url('confirmaddress', null, array('code' => $code)));
+          $user->nickname, common_config('site', 'name'), $this->getDisplayName(), common_local_url('confirmaddress', null, array('code' => $code),null,true,true));
 
         return $this->sendMessage($screenname, $body);
     }
