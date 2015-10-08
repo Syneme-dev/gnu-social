@@ -1250,6 +1250,11 @@ function common_local_url($action, $args=null, $params=null, $fragment=null, $ad
 
     return $url;
 }
+function common_local_abs_url($action)
+{
+    $url=common_local_url($action,null,null,null,true,true);
+    return $url;
+}
 
 function common_is_sensitive($action)
 {
