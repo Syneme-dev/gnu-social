@@ -170,7 +170,7 @@ function mail_to_user(&$user, $subject, $body, $headers=array(), $address=null)
 function mail_confirm_address($user, $code, $nickname, $address, $url=null)
 {
     if (empty($url)) {
-        $url = common_local_url('confirmaddress', array('code' => $code));
+        $url = common_local_url('confirmaddress', array('code' => $code),null,null,true,true);
     }
 
     // TRANS: Subject for address confirmation email.
