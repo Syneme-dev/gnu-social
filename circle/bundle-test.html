@@ -40,7 +40,8 @@ var w = 960,
 	ryPush = ry + 70;//+ 50;
 
 var splines = [];
-var domainName='http://syneme.ccom.edu.cn/statusnet/index.php';
+//var domainName='http://syneme.ccom.edu.cn/statusnet/index.php';
+var domainName='http://syneme.ccom.edu.cn/artsmesh/index.php';
 //http://artsmesh.io
 var cluster = d3.layout.cluster()
         .size([360, ry - 120])
@@ -151,7 +152,7 @@ d3.json(domainName+ "/api/statusnet/groups/list_details.json", function (classes
                     window.location.href=domainName+"/group/"+ d.key;
                 }
                 else{
-                    window.location.href=domainName+ d.key;
+                    window.location.href=domainName+"/"+ d.key;
 //                parent.window.location.href='app:nodeClick:'+ d.key;
                 }
             })
