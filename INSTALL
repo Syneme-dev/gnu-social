@@ -76,3 +76,7 @@ Installation
    edit the generate config.php on the root path of the web site.
    $config['site']['theme'] = 'dark';
 
+for full install instruction , visit
+
+https://github.com/Syneme-dev/gnu-social/blob/master/FULLINSTALL
+
